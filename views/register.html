@@ -1,0 +1,69 @@
+<div class="login">
+    <div class="logo">
+        <center><img src="assets/img/logo.png" class="img-responsive" width="250" /></center>
+        <!-- <h3 style="font-family: Papyrus;
+        color: #4db3a5;
+        font-size: 40px;
+        margin-bottom: -25px;">
+        PDF Zombie
+    </h3> -->
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content" ng-controller="registerCtrl">
+        <!-- BEGIN LOGIN FORM -->
+        <form class="login-form" name="myForm" novalidate="novalidate" ng-submit="doRegister()">
+            <h3 class="form-title font-green">Register</h3>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">First Name</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="First Name" name="firstName" ng-model="userData.firstName" required>
+                <div ng-messages="myForm.firstName.$error" ng-show="myForm.firstName.$touched || myForm.$submitted">
+                    <small class="text-danger" ng-message="required">First Name is required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Last Name" name="lastName" ng-model="userData.lastName" required>
+                <div ng-messages="myForm.lastName.$error" ng-show="myForm.lastName.$touched || myForm.$submitted">
+                    <small class="text-danger" ng-message="required">Last Name is required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off" placeholder="Email" name="email" ng-model="userData.email" required>
+                <div ng-messages="myForm.email.$error" ng-show="myForm.email.$touched || myForm.$submitted">
+                    <small class="text-danger" ng-message="required">Email is required</small>
+                    <small class="text-danger" ng-message="email">Email should be in correct format</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" ng-model="userData.password" required>
+                <div ng-messages="myForm.password.$error" ng-show="myForm.password.$touched || myForm.$submitted">
+                    <small class="text-danger" ng-message="required">Password is required</small>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn green uppercase">Register</button>
+                <!-- <a ui-sref="forgot" id="forget-password" class="forget-password">Forgot Password?</a> -->
+            </div>
+        </form>
+        <!-- END LOGIN FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form class="forget-form" action="index.html" method="post" novalidate="novalidate">
+            <h3 class="font-green">Forget Password ?</h3>
+            <p> Enter your e-mail address below to reset your password. </p>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" required> </div>
+            <div class="form-actions">
+                <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
+                <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+            </div>
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+    </div>
+    <div class="copyright"> <span style="font-size:15px;">2016 © RaterSpot.</span> </div>
+</div>

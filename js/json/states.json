@@ -1,0 +1,187 @@
+[{
+    "key": "AL",
+    "state": "ALABAMA"
+}, {
+    "key": "AK",
+    "state": "ALASKA"
+}, {
+    "key": "AS",
+    "state": "AMERICAN SAMOA"
+}, {
+    "key": "AZ",
+    "state": "ARIZONA"
+}, {
+    "key": "AR",
+    "state": "ARKANSAS"
+}, {
+    "key": "CA",
+    "state": "CALIFORNIA"
+}, {
+    "key": "CA",
+    "state": "COLORADO"
+}, {
+    "key": "CT",
+    "state": "CONNECTICUT"
+}, {
+    "key": "DE",
+    "state": "DELAWARE"
+}, {
+    "key": "DC",
+    "state": "DISTRICT OF COLUMBIA"
+}, {
+    "key": "FM",
+    "state": "FEDERATED STATES OF MICRONESIA"
+}, {
+    "key": "FL",
+    "state": "FLORIDA"
+}, {
+    "key": "GA",
+    "state": "GEORGIA"
+}, {
+    "key": "GU",
+    "state": "GUAM GU"
+}, {
+    "key": "HI",
+    "state": "HAWAII"
+}, {
+    "key": "ID",
+    "state": "IDAHO"
+}, {
+    "key": "IL",
+    "state": "ILLINOIS"
+}, {
+    "key": "IN",
+    "state": "INDIANA"
+}, {
+    "key": "IA",
+    "state": "IOWA"
+}, {
+    "key": "KS",
+    "state": "KANSAS"
+}, {
+    "key": "KY",
+    "state": "KENTUCKY"
+}, {
+    "key": "LA",
+    "state": "LOUISIANA"
+}, {
+    "key": "ME",
+    "state": "MAINE"
+}, {
+    "key": "MH",
+    "state": "MARSHALL ISLANDS"
+}, {
+    "key": "MD",
+    "state": "MARYLAND"
+}, {
+    "key": "MA",
+    "state": "MASSACHUSETTS"
+}, {
+    "key": "MI",
+    "state": "MICHIGAN"
+}, {
+    "key": "MN",
+    "state": "MINNESOTA"
+}, {
+    "key": "MS",
+    "state": "MISSISSIPPI"
+}, {
+    "key": "MO",
+    "state": "MISSOURI"
+}, {
+    "key": "MT",
+    "state": "MONTANA"
+}, {
+    "key": "NE",
+    "state": "NEBRASKA"
+}, {
+    "key": "NV",
+    "state": "NEVADA"
+}, {
+    "key": "NH",
+    "state": "NEW HAMPSHIRE"
+}, {
+    "key": "NJ",
+    "state": "NEW JERSEY"
+}, {
+    "key": "NM",
+    "state": "NEW MEXICO"
+}, {
+    "key": "NY",
+    "state": "NEW YORK"
+}, {
+    "key": "NC",
+    "state": "NORTH CAROLINA"
+}, {
+    "key": "ND",
+    "state": "NORTH DAKOTA"
+}, {
+    "key": "MP",
+    "state": "NORTHERN MARIANA ISLANDS"
+}, {
+    "key": "OH",
+    "state": "OHIO"
+}, {
+    "key": "OK",
+    "state": "OKLAHOMA"
+}, {
+    "key": "OR",
+    "state": "OREGON"
+}, {
+    "key": "PW",
+    "state": "PALAU"
+}, {
+    "key": "PA",
+    "state": "PENNSYLVANIA"
+}, {
+    "key": "PR",
+    "state": "PUERTO RICO"
+}, {
+    "key": "RI",
+    "state": "RHODE ISLAND"
+}, {
+    "key": "SC",
+    "state": "SOUTH CAROLINA"
+}, {
+    "key": "SD",
+    "state": "SOUTH DAKOTA"
+}, {
+    "key": "TN",
+    "state": "TENNESSEE"
+}, {
+    "key": "TX",
+    "state": "TEXAS"
+}, {
+    "key": "UT",
+    "state": "UTAH"
+}, {
+    "key": "VT",
+    "state": "VERMONT"
+}, {
+    "key": "VI",
+    "state": "VIRGIN ISLANDS"
+}, {
+    "key": "VA",
+    "state": "VIRGINIA"
+}, {
+    "key": "WA",
+    "state": "WASHINGTON"
+}, {
+    "key": "WV",
+    "state": "WEST VIRGINIA"
+}, {
+    "key": "WI",
+    "state": "WISCONSIN"
+}, {
+    "key": "WY",
+    "state": "WYOMING"
+}, {
+    "key": "AE",
+    "state": "ARMED FORCES AFRICA,CANADA , EUROPE ,MIDDLE EAST"
+}, {
+    "key": "AA",
+    "state": "ARMED FORCES AMERICA (EXCEPT CANADA)"
+}, {
+    "key": "AP",
+    "state": "ARMED FORCES PACIFIC"
+}]

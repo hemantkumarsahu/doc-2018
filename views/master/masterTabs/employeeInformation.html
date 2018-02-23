@@ -1,0 +1,211 @@
+<div class="portlet light bordered">
+    <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'" ng-show="isEdit=='true'"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject bold uppercase">Employee Information</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+
+                    <button class="btn btn-primary pull-right" ng-click="refresh()">
+                            Refresh
+                </button>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">PF Code</label>
+                                <input id="pfNumber" name="pfNumber" ng-model="employee.pfNumber" class="form-control" placeholder="Enter PF Code" type="text" value="" ng-keyup="$event.keyCode == 13 && getEmployeeMaster(employee.pfNumber,'emp')">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">UAN</label>
+                                <input id="unit" name="unit" ng-model="employee.uan" class="form-control" placeholder="uan number" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Full name</label>
+                                <input id="name" name="name" ng-model="employee.name" class="form-control" placeholder="Enter full name" type="text" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">
+                                <input type="radio" value="F"ng-model="employee.fatherOrHusband" name="father_or_husband"> Father's name </label>
+                                <label>
+                                <input type="radio" value="H" ng-model="employee.fatherOrHusband" name="father_or_husband"> Husband's name</label>
+                                <input id="parentsName" name="parentsName" ng-model="employee.fatherOrHusbandName" class="form-control" placeholder="Enter Name" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Religion</label>
+                                <input id="religion" name="religion" ng-model="employee.religion" class="form-control" placeholder="Enter religion. " type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Gender</label>
+                            <div class="form-group">
+                                <label class="control-label">
+                                <input type="radio" ng-model="employee.gender" checked="checked" value="MALE"> Male</label>
+                                <label class="control-label">
+                                <input type="radio" ng-model="employee.gender" value="FEMALE"> Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label">Date of birth</label>
+                            <div class="input-group input-medium date date-picker-birth" data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control" ng-model="employee.dateOfBirth" uib-datepicker-popup="{{format}}" style="width: 200;" id="dob" is-open="popup_dob.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                />
+                                <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="dob()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label class="control-label">Age</label>
+                                <input id="age" name="age" ng-model="employee.age" class="form-control" placeholder="Ex.21" readonly type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">Marital status</label>
+                            <div class="form-group">
+                                <label class="control-label">
+                                <input type="radio" value="MARRIED" ng-model="employee.maritalStatus" name="maritalStatus" id="maritalStatus">Married</label>
+                                <label class="control-label">
+                                <input type="radio" value="SINGLE" ng-model="employee.maritalStatus" name="maritalStatus" id="maritalStatus">Single</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Date of joining</label>
+                            <div class="input-group input-medium date date-picker-free" data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control" ng-model="employee.dateOfJoining" uib-datepicker-popup="{{format}}" style="width: 200px;" id="doj" is-open="popup_doj.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                />
+                                <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="doj()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">date of leaving</label>
+                            <div class="input-group input-medium date date-picker-free" data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control" ng-model="employee.dateOfLeaving" uib-datepicker-popup="{{format}}" style="width: 200;" id="dol" is-open="popup_dol.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                />
+                                <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="dol()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Mobile number</label>
+                                <input id="contactNo" name="contactNo" ng-model="employee.contact" class="form-control" placeholder="Enter Mobile No." maxlength="13" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Leaving reason</label>
+                                <select class="form-control" name="retirementReason" id="retirementReason" ng-model="employee.reason">
+                                <option value="">Select reason if leaving</option>
+                                <option value="Superannuation">Superannuation</option>
+                                <option value="Superannuation">Retirement</option>
+                                <option value="Cessation">Cessation</option>
+                                <option>
+                                    value="Perm. Disable">Perm. Disable</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Family pen. Applicable</label>
+                                <select class="form-control" name="familyPenApplicable" id="familyPenApplicable" ng-model="employee.familyPensApplicable">
+                                <option value="YES" ng-selected="true">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label">Gross Wages on 15-11-95</label>
+                                <input id="wegas" name="wegas" ng-model="employee.wages" class="form-control" placeholder="Enter Wages" type="text" string-to-number>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Previous service (years)</label>
+                                <input id="previousServiceYear" ng-model="employee.previousServiceYears" name="previousServiceYear" class="form-control" placeholder="Enter Previous Service Years" type="text" string-to-number>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Internatinal worker</label>
+                                <select class="form-control" ng-model="employee.internationalWorker" name="internationalWorker" id="internationalWorker">
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Previous Employer</label>
+                                <input id="previousEmployer" ng-model="employee.previousEmployer" name="previousEmployer" class="form-control" placeholder="Previous Employer Details" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Acct Settled</label>
+                                <select class="form-control" name="acct" id="acct" ng-model="employee.acctSettled">
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Voluntory Rate (%)</label>
+                                <input id="voluntaryRate" ng-model="employee.voluntoryRate" name="voluntaryRate" class="form-control" placeholder="Enter voluntary rate" type="text" string-to-number>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Ticket No.</label>
+                                <input id="ticketNo" ng-model="employee.ticketNo" name="ticketNo" class="form-control" placeholder="Enter ticket number." type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Unit</label>
+                                <input id="unit" name="unit" ng-model="employee.unit" class="form-control" placeholder="Choose unit" type="text" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right row" ng-show="saveEmpStatus">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn green-meadow" ng-click="saveEmployeeMaster(employee.pfNumber)">
+                        <i class="fa fa-check"></i> Save
+                    </button>
+                        <a href="" class="btn default" ng-click="refresh()">Cancel</a>
+                    </div>
+                </div>
+                <div class="form-actions right row" ng-show="!saveEmpStatus">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn green-meadow" ng-click="updateEmployeeMaster(employee.pfNumber)">
+                        <i class="fa fa-check"></i> Update
+                    </button>
+                        <a href="" class="btn default" ng-click="refresh()">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

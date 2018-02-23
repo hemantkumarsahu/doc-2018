@@ -1,0 +1,22 @@
+{
+  "name": "pf-admin-angular",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"angular-filters": "^1.1.2",
+    "angular-moment": "^1.0.1",
+    "angular-xeditable": "^0.7.1",
+    "angular-pdf-viewer": "^0.2.13",
+    "angular-pdfjs-viewer": "^0.8.1"
+  }
+}

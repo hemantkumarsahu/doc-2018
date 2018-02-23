@@ -1,0 +1,82 @@
+<div class="portlet light bordered">
+    <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'"></div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject bold uppercase">Recon</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <button class="btn btn-primary pull-right" ng-click="refresh()">
+                        Refresh
+                    </button>
+                </div>
+                <div class="portlet-body">
+                    <div class="container">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Period</th>
+                                    <th>A/c1 (emp1)</th>
+                                    <th>A/c1 (empr)</th>
+                                    <th>A/c 2</th>
+                                    <th>A/c 10</th>
+                                    <th>A/c 21</th>
+                                    <th>A/c 22</th>
+                                    <th>Paid on</th>
+                                    <th>Chq Date</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="m in monthJSON">
+                                    <td ng-click="addRecon('m.month')">{{m.shortMonth}}</td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc1_emp1" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc1_empr" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc2" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc10" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc21" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.acc22" size="5">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="date" ng-model="m.paid_on" size="5">
+                                        <!-- <input class="form-control" type="text" ng-model="m.paid_on" size="5"> -->
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="date" ng-model="m.chq_date" size="5">
+                                        <!-- <div class="input-group input-medium date date-picker-birth" data-date-format="dd-mm-yyyy">
+                                            <input type="text" class="form-control" ng-model="m.chq_date" uib-datepicker-popup="{{format}}" style="width: 200;" id="dob" is-open="chq_date.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="chq_date_($index)"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                                        </div> -->
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="text" ng-model="m.unit" size="5">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pull-right">
+                            <button class="btn btn-info" type="button" ng-click="recon()">Ok</button>
+                            <button class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-primary" type="button" ng-click="addRecon('column')">Add</button>
+                            <button class="btn btn-danger" type="button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

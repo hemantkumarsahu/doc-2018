@@ -1,0 +1,30 @@
+<div ng-spinner-bar class="page-spinner-bar">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+<div class="tabdiv-container "> 
+        <table class="table table-hover">
+                <tr>
+                    <th>Hospital Name</th>
+                    <th>Visiting Date</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                    <th>Status</th>
+                </tr>
+                <tr ng-repeat="d in availability">
+                    <td>{{d.hospital_name}}</td>
+                    <td>{{d.date}}</td>
+                    <td>{{d.slotfrom}}</td>
+                    <td>{{d.slotto}}</td>
+                    <td><button type="button" class="btn btn-info btnradius"  ng-click="deleteAvailability()">
+                                                            <span class="fa fa-pencil-square-o"></span></button></td>
+                    <td><button type="button" class="btn btn-primary btnradius">
+                                                            <span class="fa fa-times"></span></button></td>
+                    <td><button type="button" class="btn btn-link">Active</button></td>
+
+                </tr>
+            </table>
+</div>

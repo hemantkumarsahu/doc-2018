@@ -1,0 +1,107 @@
+
+<div class="row ng-scope">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <!--   <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase"> Companies</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
+                            <input type="radio" name="options" class="toggle" id="option1">Actions</label>
+                        <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
+                            <input type="radio" name="options" class="toggle" id="option2">Settings</label>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+                <button style="background-color:orange; " class="btn btn-outline" ng-click="callModal('addUnit.html','md')">Add</button>
+                <span class="caption-helper hide "></span>
+            </div> -->
+            <!-- <div class="col-md-6">
+                <label class="control-label">DOC:</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="unitModel.name"></input>
+            </div> -->
+            <div>
+                <input type="text"  ng-model="unitModel.unit" ></input>
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn sbold green" ng-click = "saveUnit()"> Add New
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right">
+                                <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-print"></i> Bulk Add Companies </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" ui-sref="app.addCompany">
+                                            <i class="fa fa-file-pdf-o"></i> Add single company</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table ng-table="tableParams" class="table" show-filter="true">
+                    <tr ng-repeat="unit in allunits">
+                        <td data-title="'Name'" filter="{ 'unit': 'text'}" sortable="'unit'">
+                        <span editable-text="unit.unit" e-name="unit" e-form="rowform">
+                            {{unit.unit}}
+                        </td>
+                        <!-- <td data-title="'Company Nu'" filter="{ 'address': 'text'}" sortable="'address'">
+                            {{unit.companyID}}
+                        </td> -->
+                        <!-- <td data-title="'Actions'">
+                            <a href="#" ng-click="rowform.$show()">Edit</a> | <a ng-click="deleteUnit(unit._id)">Delete</a>
+                        </td> -->
+                        <td style="white-space: nowrap" data-title="'Actions'">
+                        <!-- form -->
+                            <form editable-form name="rowform" onbeforesave="updateU($data,unit._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == unit">
+                                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-ok-circle"></span>
+                                </button>
+                                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                             </button>
+                            </form>
+                            <div class="buttons" ng-show="!rowform.$visible">
+                                <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit"></span></button>
+                                <button class="btn btn-danger" ng-click="deleteUnit(unit._id)">del</button>
+                            </div>
+                        </td>
+
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+</div>
+</div>
+                    
+
+
+
+                    <!-- <a href="#" ng-click="rowform.$show()">Edit</a> | <a ng-click="deleteUnit(unit._id)">Delete</a> -->

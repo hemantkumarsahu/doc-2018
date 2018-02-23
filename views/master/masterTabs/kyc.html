@@ -1,0 +1,100 @@
+<style>
+     ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()">
+    <div class="row">
+        <div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption caption-md">
+                                <span class="caption-subject font-green bold uppercase">Employee</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="overflow-y:scroll; height:400px;">
+                            <div class=" slimScrollDiv " style="position: absolute; overflow: hidden; ">
+                                <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+                                    <form class="form-horizontal " role="form " name="myForm">
+                                        <div class="form-body ">
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label ">Enter PF Code</label>
+                                                <div class="col-lg-8 ">
+                                                    <input type="text " class="form-control " placeholder="employees PF Code " id="pfNumber " name="pfNumber " ng-model="kycModel.pfNumber " ng-keyup="$event.keyCode == 13 && getEmployeeMaster(kycModel.pfNumber,'kyc')" required>
+                                                    <div ng-show="myForm.pfNumber.$touched && myForm.pfNumber.$error" ng-messages="myForm.pfNumber.$error">
+                                                        <small ng-message="required" style="color:red;">PF Code cannot be Empty</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-lg-4 control-label ">Enter UAN</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text " class="form-control " placeholder="Employee 's UAN" id="uan" name="uan" ng-model="kycModel.uan">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label">Name</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" placeholder="Employee name" id="name" name="name" ng-model="kycModel.name" readonly="readonly"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <div class="portlet light bordered ">
+                        <div class="portlet-title ">
+                            <div class="caption caption-md ">
+                                <span class="caption-subject font-green bold uppercase ">Enter KYC Details</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body " style="overflow-y:scroll; height:400px;">
+                            <div class=" slimScrollDiv " style="position: absolute; overflow: hidden; ">
+                                <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+                                    <form class="form-horizontal " role="form " name="myForm" ng-submit="addKYC()">
+                                        <div class="form-body">
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label">Bank Account</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" ng-disabled="!kycStatus" class="form-control" placeholder="Enter if any page number" id="bankAccount" name="bankAccount" ng-model="kycModel.bankAccount" value=""> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label">IFSC</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" ng-disabled="!kycStatus" class="form-control" placeholder="Enter IFSC" id="ifsc" name="ifsc" ng-model="kycModel.ifsc">
+                                                    <!-- ng-keyup="contribution()" ng-change="contribution()" -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">PAN</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" ng-disabled="!kycStatus" class="form-control" placeholder="Enter pan" id="pan" name="pan" ng-model="kycModel.pan">
+                                                    <!-- ng-keyup="contribution()" ng-change="contribution()" -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Adhar Number</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" ng-disabled="!kycStatus" placeholder="Enter adhar" id="adhar" name="adhar" ng-model="kycModel.adhar" value=""> </div>
+                                            </div>
+                                            <div class="form-actions right1" style="padding-left: 10px;">
+                                                <button type="submit" ng-disabled="!kycStatus" class="btn purple">Save KYC Details</button>
+                                                <button type="reset" class="btn default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- new activity  -->
+                <!-- end here -->
+            </div>
+        </div>
+    </div>

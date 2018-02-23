@@ -1,0 +1,180 @@
+<h3 class="page-title">
+	
+</h3>
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+            <i class="fa fa-angle-right"></i>
+			<a href="#/ng_pescription.html">Pescription</a>
+			
+		</li>
+		
+	</ul>
+	
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+ </div>
+
+ <div class="row" ng-hide="hidepes">
+ 	<div class="col-md-12">
+ 			<div class="portlet light bordered">
+ 					<div class="portlet-body">
+ 							<!-- <div class="col-md-6">
+ 									<button type="button" class="btn btn-info btnradius" ng-click="goback()" ></button>
+ 							</div> -->
+ 							<!-- <div class="col-md-6">
+ 									<button ng-click="refreshNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+ 							</div><br> -->
+ 							<div class="row">
+
+ 								 <table ng-table="tableParams" class="table table-bordered tableView" show-filter="showFilter">
+                                        <tr data-ng-repeat="(key,value) in pesList ">
+                                            <td data-title="'Patient Name'" filter="{ 'name': 'text'}" sortable="'key'">
+                                                <span  e-name="key" e-form="rowform">
+                                                  {{key}}</span>
+                                            </td>
+                                           
+                                           
+                                            <td  data-title="'History'">
+                                              <center><div class="buttons"  ng-show="!rowform.$visible">
+                                                  <button type="buton" class="btn btn-link" ng-click="viewPescription(value)">View</button>
+                                                </div></center>
+                                            </td>
+
+                                           
+                                        </tr>
+                                    </table>
+
+
+ 							</div>
+
+ 					</div>
+ 			</div>
+
+ 	</div>
+ </div>
+
+                        <!-- Pescription History -->
+ <div class="row" ng-show="showpes">
+    <div class="col-md-12">
+            <div class="portlet light bordered">
+                    <div class="portlet-body">
+                            <div class="col-md-6">
+                                   <button type="button" class="btn btn-info btnradius" ng-click="goback()" >Back</button>
+                            </div>
+                            <div class="col-md-6">
+                                    <button ng-click="refreshNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+                            </div><br>
+                            <div class="row">
+
+                                <table ng-table="tableParams" class="table table-bordered" show-filter="showFilter">
+                                        <tr ng-repeat="his in patientHistory">
+                                          <td data-title="'Patient Name'" filter="{ 'patientId': 'text'}" sortable="'patientId'">
+                                            <span  e-name="patientId.name" e-form="rowform">
+                                              {{his.patientId.name}}
+                                            </td>
+
+                                            <td data-title="'Appointment ID'" filter="{ 'appointmentId': 'text'}" sortable="'appointmentId'">
+                                            <span  e-name="appointmentId._id" e-form="rowform">
+                                              {{his.appointmentId._id}}
+                                            </td>
+
+                                            <td data-title="'Appointment Date'" >
+                                            <span  e-form="rowform">
+                                              {{his.appointmentId.date}}
+                                            </td>
+                                             <td data-title="'Description'">
+                                            <span editable-text="his.description" e-name="description" e-form="rowform">
+                                              {{his.description}}
+                                            </td>
+
+                                            <td data-title="'Note'">
+                                            <span editable-text="his.note" e-name="note" e-form="rowform">
+                                              {{his.note}}
+                                            </td>
+
+                                            
+                                           
+                                                <td style="white-space: nowrap">
+                                                    <!-- form -->
+                                                    <form editable-form name="rowform" onbeforesave="updatepesHis($data,his._id,his.patientId._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                                                      <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary btnradius">
+                                                        <span class="glyphicon glyphicon-ok-circle"></span>
+                                                      </button>
+                                                      <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btnradius">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                      </button>
+                                                    </form>
+                                                    <div class="buttons" ng-show="!rowform.$visible">
+                                                      <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit btnradius"></span></button>
+                                                      <button class="btn btn-danger" ng-click="delpesHistory(his._id,his.patientId._id)">del</button>
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                </table>
+
+
+                            </div>
+
+                    </div>
+            </div>
+
+    </div>
+ </div>
+
+
+ <!-- Modal -->
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Pescription</h4>
+        </div>
+        <div class="modal-body">
+         	<div class="form-group">
+         		<div class="col-md-4">Patient ID</div>
+         		<div class="col-md-8">
+         			<select name="petientId" class="form-control" ng-model="pes.patientId" id="patientId">
+         				<option></option>
+         			</select>
+         		</div>
+         	</div> <br><br>
+         	<div class="form-group">
+         		<div class="col-md-4">Appointment ID</div>
+         		<div class="col-md-8">
+         			<select name="appointmentId" class="form-control" ng-model="pes.appointmentId" id="appointmentId">
+         				<option></option>
+         			</select>
+         		</div> 
+         	</div> <br><br>
+         	<div class="form-group">
+         		<div class="col-md-4">Description</div>
+         		<div class="col-md-8">
+         			<textarea class="form-control" ng-model="pas.description" rows="3" name="description" id="description"></textarea>
+         		</div>
+         	</div> <br><br><br>
+
+         	<div class="form-group">
+         		<div class="col-md-4">Note</div>
+         		<div class="col-md-8">
+         			<input type="text" class="form-control" ng-model="pas.note" name="note" id="note">
+         		</div>
+         	</div> <br><br>
+
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary btnradius" ng-click="" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-default btnradius" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,192 @@
+<style>
+     ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()" ng-controller="companyDashboardCtrl">
+    <div class="row">
+        <div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption caption-md">
+                                <span class="caption-subject font-green bold uppercase">Employee's Monthly pf entries</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="overflow-y:scroll; height:400px;">
+                            <div class=" slimScrollDiv " style="position: absolute; overflow: auto; ">
+                                <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+                                    <form class="form-horizontal " role="form " name="myForm">
+                                        <div class="form-body ">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label ">Select Month</label>
+                                                <div class="col-md-3">
+                                                    <select class="form-control" ng-model="monthlyPfModel.month" ng-options="m for m in fullMonth" required>
+                                                        <option value="$index">{{m}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">copy from previous month</button>
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog modal-sm">
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                              <h4 class="modal-title">copy from previous month</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <label class="control-label">copy from the month</label>
+                                                                <input type="number" class="form-control" placeholder="Enter month" id="copy" name="copy"                     ng-model="monthlyPfModel.copy" value="" max="31" min="0"> 
+                                                              <label class="control-label">unit</label>
+                                                                 <select class="form-control" name="unit" id="unit" ng-model="monthlyPfModel.unit">
+                                                                    <option ng-repeat="option in data" value="{{option.unit}}">{{option.unit}}</option>
+                                                                 </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" ng-click="copy()">Yes</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                </div>
+
+                                            </div>    
+
+                
+
+                                                    <!--<div class="input-group input-medium date date-picker-month " data-date-format="mm/yyyy " data-date-viewmode="years " data-date-minviewmode="months ">
+                                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" style="width: 277px;" id="monthNumber" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                                        />
+                                                        <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                                                          <input type="text" class="form-control" id="monthYear" style="width: 277px;" name="monthYear" value="">
+                                                        <span style="width: 10px;" class="input-group-btn"><button class="btn default" ng-click="open($event)" type="button"><i class="fa fa-calendar "></i></button></span> 
+                                                    </div>-->
+                                                
+                                            
+
+                                           <!--  <div class="form-group">
+                                                <label class="col-md-3 control-label">Month</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" class="form-control" placeholder="Enter month" id="copy" name="copy" ng-model="monthlyPfModel.copy" value="" max="31" min="0"> 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Unit</label>
+                                                    <select class="form-control" name="unit" id="unit" ng-model="monthlyPfModel.unit">
+                                                        <option ng-repeat="option in data" value="{{option.unit}}">{{option.unit}}</option>
+                                                    </select>
+                                                    <button type="button" class="btn default" ng-click="copy()">copy</button>
+                                                </div>
+                                             </div> -->
+
+                                            <div class="form-group ">
+                                                <label class="col-md-3 control-label ">Enter PF Code</label>
+                                                <div class="col-md-8 ">
+                                                    <input type="text " class="form-control" placeholder="employees PF Code " id="pfNumber " name="pfNumber " ng-model="monthlyPfModel.pfNumber " ng-keyup="$event.keyCode == 13 && getEmployee(monthlyPfModel.pfNumber) " required>
+                                                    <div ng-show="myForm.pfNumber.$touched && myForm.pfNumber.$error" ng-messages="myForm.pfNumber.$error">
+                                                        <small ng-message="required" style="color:red;">PF Code cannot be Empty</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="col-md-3 control-label ">Enter UAN</label>
+                                                <div class="col-md-8">
+                                                    <input type="text " class="form-control " placeholder="Employee 's UAN" id="uan" name="uan" ng-model="monthlyPfModel.uan">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="Employee name" id="name" name="name" ng-model="monthlyPfModel.name" readonly="readonly"> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Break</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" class="form-control" placeholder="Enter if any break" id="break" name="break" ng-model="monthlyPfModel.break" value="" max="31" min="0"> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Page No.</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" placeholder="Enter if any page number" id="pageno" name="pageno" ng-model="monthlyPfModel.pageno" value="NM" max="31" min="0"> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Basic</label>
+                                                <div class="col-md-8">
+                                                    <input type="number" ng-disabled="!employeeFound" class="form-control" placeholder="Enter salary" id="salary" name="salary" ng-model="monthlyPfModel.grossSalary" min="0">
+                                                    <!-- ng-keyup="contribution()" ng-change="contribution()" -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions right1" style="padding-left: 10px;">
+                                            <button type="button" ng-disabled="!employeeFound" class="btn purple" ng-click="monthlyEntry()">Save Pf Entry</button>
+                                            <button type="button" class="btn default" ng-click="reset()">Reset</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                    <div class="portlet light bordered ">
+                        <div class="portlet-title ">
+                            <div class="caption caption-md ">
+                                <span class="caption-subject font-green bold uppercase ">GROSS WAGES</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body " style="overflow-y:scroll; height:400px;">
+                            <div class=" slimScrollDiv " style="position: absolute; overflow: hidden; ">
+                                <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+
+
+                                    <div class="portlet-body ">
+                                        <div class="tab-content ">
+                                            <ul>
+                                                <li> Employee's contribution
+                                                    <div class="form-group ">
+                                                        <div class="input-group ">
+                                                            <span class="input-group-addon ">
+                                                                PF : 12.000 %
+                                                            </span>
+                                                            <input type="text " class="form-control " id="employeesPf " ng-model="monthlyPfModel.employee_pf " readonly="readonly "> </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="input-group ">
+                                                            <span class="input-group-addon ">
+                                                                Pens : 0.000 %
+                                                            </span>
+                                                            <input type="text " class="form-control " id="employeesFp " ng-model="monthlyPfModel.employee_fp " readonly="readonly "> </div>
+                                                    </div>
+                                                </li>
+                                                <li> Employer's contribution
+                                                    <div class="form-group ">
+                                                        <div class="input-group ">
+                                                            <span class="input-group-addon ">
+                                                                PF : 12.000 %
+                                                            </span>
+                                                            <input type="text " class="form-control " id="employersPf " ng-model="monthlyPfModel.employer_pf " readonly="readonly "> </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="input-group ">
+                                                            <span class="input-group-addon ">
+                                                                Pens : 8.330 %
+                                                            </span>
+                                                            <input type="text " class="form-control " id="employersFp " ng-model="monthlyPfModel.employer_fp " readonly="readonly "> </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- new activity  -->
+                <!-- end here -->
+            </div>
+        </div>
+    </div>

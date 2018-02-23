@@ -1,0 +1,29 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-green-sharp">
+            <i class=" icon-layers font-green"></i>
+            <span class="caption-subject bold uppercase">Employee Information</span>
+            <span class="caption-helper hide"></span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12" align="center">
+                <!--<div class="form-group">
+                    <label class="control-label">Monthwise</label>
+                    <input id="screen" name="screen" ng-model="empInfo.outputType" type="radio" value="printer" ng-click="checkbox1()">
+                    <label class="control-label">PF. No .Wise</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="empInfo.outputType" type="radio" value="range" ng-click="checkbox1()">
+                </div>-->
+                <div class="form-group">
+                    <label class="control-label">Employee Information For the Month &nbsp;</label>
+                    <input id="selectedMonth" name="selectedMonth" max="2" min="1" ng-model="empInfo.selectedMonth" type="number">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="exportToExcelEmpInfo()">Submit</button>
+                    <button class="btn btn-primary" ng-click="close()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

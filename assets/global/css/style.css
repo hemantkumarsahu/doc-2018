@@ -1,0 +1,30 @@
+.content_hos{
+        width: 93%;
+    margin-left: 10%;
+    border: 1px outset;
+    border-radius: 10px !important;
+}
+.createCust{
+    
+    width: 70%;
+    margin-left: 12%;
+}
+
+.tabdiv{
+    width: 95%;
+}
+.create_div{
+    margin-left: 13%;
+    width: 70%;
+    /* border: 1px outset; */
+    border-radius: 10px;
+    padding: 4%;
+}
+.btnradius{
+    border-radius: 10px !important;
+    
+}
+.tableView{
+    width: 78%;
+    margin-left: 11%;
+}

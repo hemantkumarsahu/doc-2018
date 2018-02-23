@@ -1,0 +1,31 @@
+{
+  "name": "pf-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "apidoc-details.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://santosh-pf-web@bitbucket.org/csd-pune/pf-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/csd-pune/pf-web#readme",
+  "devDependencies": {
+    "bower": "^1.8.0"
+  },
+  "dependencies": {
+    "angular-filters": "^1.1.2",
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-prettify": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rtlcss": "^1.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}

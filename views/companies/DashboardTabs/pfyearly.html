@@ -1,0 +1,133 @@
+<div class="portlet-body">
+    <div class="row" id="yearly_entry_segment">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title tabbable-line">
+                    <div class="caption">
+                        <i class="icon-bubbles font-dark"></i>
+                        <span class="caption-subject font-dark bold uppercase">Wages</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+                            <input type="text" ng-model="pfNumber" class="form-control" placeholder="PF Code" ng-keyup="$event.keyCode == 13 && getEmployeePfForYear(pfNumber,year)">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="_name" name="_name" class="form-control" ng-model="empName" placeholder="Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tab-content">
+                        <form id="yearly_entry_form" ng-submit="saveEmployeePfForYear()" method="POST">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label class="control-label"><b>Month</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label"><b>PF Basic</b></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            <b>Employee PF</b> (12.000 %)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            <b>Employee FP</b> (0.000 %)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            <b>Employer PF</b> (12.000 %)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            <b>Employer FP</b> (8.330 %)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-repeat="month in months">
+                                <div class="col-md-1">
+                                    <label class="control-label">{{month.name+"-"+month.year}}</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input ng-model="month.pfData.salary" ng-blur="yearlyEntry(month)" type="text" class="form-control input_salary">
+                                        <!-- onkeyup="calculatePf(this);" onblur="calculatePf(this);" -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input ng-model="month.pfData.employee_pf" type="text" class="form-control input_employee_pf">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input ng-model="month.pfData.employee_fp" type="text" class="form-control input_employee_fp">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input ng-model="month.pfData.employer_pf" type="text" class="form-control input_employer_pf">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input ng-model="month.pfData.employer_fp" type="text" class="form-control input_employer_fp">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <label class="control-label"><b>Total</b></label>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="0" id="total_salary" ng-model="total.total_salary">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="0" id="total_employee_pf" ng-model="total.total_employee_pf">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="0" id="total_employee_fp" ng-model="total.total_employee_fp">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="0" id="total_employer_pf" ng-model="total.total_employer_pf">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="0" id="total_employer_fp" ng-model="total.total_employer_fp">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-actions right1 col-md-offset-1">
+                                <button type="submit" class="btn purple" ng-click="saveYearlyTable()">Save yearly entry</button>
+                                <button type="reset" class="btn default" ng-click="pfNumber='';empName='';">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

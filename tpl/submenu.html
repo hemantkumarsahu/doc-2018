@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="caption font-green-sharp">
+                <i class=" icon-layers font-green"></i>
+                <span class="caption-subject bold uppercase">Company Name :  {{company.name}}</span>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Data Entry</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline" ui-sref="app.master">Master</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline" ui-sref="app.editCompany({companyId: company._id,isEdit:true})">Company Details</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Form 3A</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Form 6A</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Challan</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Recons.</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Import</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">ECR</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Add Note</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="caption" style="color:orange;font-size: 18; border: 1px; margin:2px;">
+                <button class="btn btn-outline">Employees</button>
+                <span class="caption-helper hide"></span>
+            </div>
+            <!--Your Nested view will be displayed here probably-->
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

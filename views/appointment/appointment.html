@@ -1,0 +1,212 @@
+<h3 class="page-title">
+	
+</h3>
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<i class="fa fa-angle-right"></i>
+			<a href="#/ng_appointment.html">Appointment</a>
+			
+		</li>
+		
+	</ul>
+	
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet light bordered">
+			<div class="portlet-body">
+				<div class="col-md-6">
+					<!-- <button type="button" class="btn btn-info btnradius " data-toggle="modal" data-target="#myModal">Appointment</button> -->
+				</div>
+				<div class="col-md-6">
+					<!-- <button ng-click="refDegreeNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button> -->
+				</div>
+
+				<div class="row">
+					<table ng-table="tableParams" class="table table-bordered" show-filter="showFilter">
+
+						<tr ng-repeat="appoint in patientList">
+
+							<td data-title="'Patient Name'" filter="{ 'name': 'text'}" sortable="'name'">
+								<span  e-name="pname" e-form="rowform">
+									{{appoint.patientId.name}}
+								</td>
+
+								<td data-title="'Hospital Name'" filter="{ 'name': 'text'}" sortable="'name'">
+									<span  e-name="hname" e-form="rowform">
+										{{appoint.hospitalId.name}}
+									</td>
+									<td data-title="'Appointment Date'" >
+										<span  e-name="date" e-form="rowform">
+											{{appoint.date}}
+										</td>
+
+									<td data-title="'Start Time'" >
+										<span  e-name="start" e-form="rowform">
+											{{appoint.start}}
+										</td>
+
+										<td data-title="'End Time'" >
+											<span  e-name="end" e-form="rowform">
+												{{appoint.end}}
+											</td>
+											<td data-title="'Dises Description'">
+												<span  e-name="disease_description" >
+													{{appoint.disease_description}}
+											</td>
+											<td data-title="'Status'" >
+												<select name="status" id="status" ng-model="appoint.status" ng-change="updateInfo(appoint)" class="form-control">
+													<option value="">Select</option>
+													<option value="confirm">Confirm</option>
+													<option value="waiting">Waiting</option>
+													<option value="cancel">Cancel</option>
+													<!-- <button type="button" class="btn btn-link" ng-click=">{{deg.status}}</button> -->
+											</td>
+											<td style="white-space: nowrap">
+												<div class="buttons" n>
+
+													<button class="btn btn-danger" ng-click="deletePatientAppointment(appoint._id)">del</button>
+												</div>
+											</td>
+											<td style="white-space: nowrap">
+												<div class="buttons" n>
+													<button class="btn btn-primary" ng-click="getConfiguration(appoint)" data-toggle="modal" data-target="#myModalCheckUp">CheckUp</button>
+												</div>
+											</td>
+											<td style="white-space: nowrap">
+												<div class="buttons" n>
+													<button class="btn btn-primary" ng-click="getConfiguration(appoint)" data-toggle="modal" data-target="#myModalPescription">Pescription</button>
+												</div>
+											</td>
+											<td style="white-space: nowrap">
+												<div class="buttons" n>
+													<button class="btn btn-primary" ng-click="getConfiguration(appoint)" data-toggle="modal" data-target="#myModalNote">Note</button>
+												</div>
+											</td>
+
+							</tr>
+				    </table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+					<!-- CheckUp Model -->
+<div class="modal fade" id="myModalCheckUp" role="dialog">
+	<div class="modal-dialog modal-md">
+	<form name="checkupForm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Checkup</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<div class="col-md-4">Patient Name</div>
+					<div class="col-md-8">
+         				<input type="text" name="patientName" class="form-control" ng-model="patientname" value="{{patientname}}" readonly>
+         			</div> 
+				</div> <br><br>
+				<div class="form-group">
+					<div class="col-md-4">Description</div>
+					<div class="col-md-8">
+						<textarea class="form-control" ng-model="checkup.description" rows="2" name="description" id="description" required /></textarea>
+					</div>
+				</div> <br><br><br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary btnradius" ng-click="saveCheckUp()" data-dismiss="modal" ng-disabled="checkupForm.$invalid">Save</button>
+				<button type="button" class="btn btn-default btnradius" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+
+
+       <!-- Pescription Model -->
+<div class="modal fade" id="myModalPescription" role="dialog">
+	<div class="modal-dialog modal-md">
+	<form name="pescriptionForm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Pescription</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<div class="col-md-4">Patient Name</div>
+					<div class="col-md-8">
+						  <input type="text" name="patientName" class="form-control" value="{{patientname}}" ng-model="patientname" readonly>
+
+					</div>
+				</div> <br><br>
+				<div class="form-group">
+					<div class="col-md-4">Description</div>
+					<div class="col-md-8">
+						<textarea class="form-control" ng-model="pes.description" rows="2" name="description" id="description" required></textarea>
+					</div>
+				</div> <br><br><br>
+
+				<div class="form-group">
+					<div class="col-md-4">Note</div>
+					<div class="col-md-8">
+						<input type="text" class="form-control" ng-model="pes.note" name="note" id="note" required />
+					</div>
+				</div> <br><br>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary btnradius" ng-click="savePescription()" data-dismiss="modal" ng-disabled="pescriptionForm.$invalid">Save</button>
+				<button type="button" class="btn btn-default btnradius" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+
+						<!-- Note Model -->
+<div class="modal fade" id="myModalNote" role="dialog">
+    <div class="modal-dialog modal-md">
+    <form name="noteForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Note</h4>
+        </div>
+        <div class="modal-body">
+	         	<div class="form-group">
+	         		<div class="col-md-4">Patient Name</div>
+	         		<div class="col-md-8">
+	         			  <input type="text" name="patientName" ng-model="patientname" class="form-control" value="{{patientname}}" readonly>
+	         		</div>
+	         	</div> <br><br>
+	         	<div class="form-group">
+	         		<div class="col-md-4">Description</div>
+	         		<div class="col-md-8">
+	         			<textarea class="form-control" ng-model="note.description" rows="2" name="description" id="description" required /></textarea>
+	         		</div>
+	         	</div> <br><br>
+		</div>
+	        <div class="modal-footer">
+	        <button type="button" class="btn btn-primary btnradius" ng-click="saveNote()" data-dismiss="modal" ng-disabled="noteForm.$invalid">Save</button>
+	          <button type="button" class="btn btn-default btnradius" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,140 @@
+<style>
+    .dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+    
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+</style>
+<div class="col-md-12">
+    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div class="row dataTables_wrapper">
+                <div class="pull-right">
+                    <!--<input type="text" class="form-control" name="pf_number" placeholder="PF Number" ng-model="pf_number">
+                    <label>Month :</label>
+                    <select name="pf_month" ng-model="pf_month" class="form-control">
+                        <option value="Jan">Jan</option>
+                        <option value="Feb">Feb</option>
+                        <option value="March">March</option>
+                        <option valuNe="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="Aug">Aug</option>
+                        <option value="Sept">Sept</option>
+                        <option value="Oct">Oct</option>
+                        <option value="Nov">Nov</option>
+                        <option value="Dec">Dec</option>
+                    </select>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <input type="radio" value="AND" ng-model="cfilter.option" name="andor" id="andor" checked>AND</label>
+                        <label class="control-label">
+                            <input type="radio" value="OR" ng-model="cfilter.option" name="andor" id="andor">OR</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <input class="" type="text" value="AND" ng-model="cfilter.option" name="andor" id="andor" checked>Page No.</label>
+                    </div>
+                    <button ng-click="customFilter(pf_number,pf_month)" class="btn">filter</button>-->
+                    <button ng-click="refreshNgTable()" class="btn">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+                </div>
+            </div>
+            <table ng-table="tableParams" class="table table-bordered" show-filter="showFilter" style="overflow-x: auto;">
+                <tr ng-repeat="user in $data">
+                    <td data-title="'PF Code'" filter="{ 'pfNumber': 'text'}" sortable="'pfNumber'" style="width: 10px;">
+                        <span editable-text="user.pfNumber" e-name="pfNumber" e-form="rowform">
+                        {{user.pfNumber}}
+                    </td>
+                    <td data-title="'Month'" filter="{ 'month': 'text'}" sortable="'month'">
+                        <span editable-text="user.month" e-name="month" e-form="rowform">
+                        {{user.month}}
+                    </td>
+                    <td data-title="'Year'"  sortable="'year'">
+                        <span editable-text="user.year" e-name="year" e-form="rowform">
+                        {{user.year}}
+                    </td>
+                    <td data-title="'Basic'"  sortable="'salary'">
+                        <span editable-text="user.salary" e-name="salary" e-form="rowform">
+                        {{user.salary}}
+                    </td>
+                     <td data-title="'Voluntary Rate'"  sortable="'voluntoryRate'">
+                        <span editable-text="user.voluntoryRate" e-name="voluntoryRate" e-form="rowform">
+                        {{(user.voluntoryRate)?user.voluntoryRate:0}}
+                    </td>
+                    <td data-title="'Empl PF'"  sortable="'employee_pf'">
+                        <span editable-text="user.employee_pf" e-name="employee_pf" e-form="rowform">
+                        {{user.employee_pf}}
+                    </td>
+                    <td data-title="'Empl FP'"  sortable="'employee_fp'">
+                        <span editable-text="user.employee_fp" e-name="employee_fp" e-form="rowform">
+                        {{user.employee_fp}}
+                    </td>
+                    <td data-title="'Emplr PF'"  sortable="'employer_pf'">
+                        <span editable-text="user.employer_pf" e-name="employer_pf" e-form="rowform">
+                        {{user.employer_pf}}
+                    </td>
+                    <td data-title="'Emplr FP'"  sortable="'employer_fp'">
+                        <span editable-text="user.employer_fp" e-name="employer_fp" e-form="rowform">
+                        {{user.employer_fp}}
+                    </td>
+                    <td data-title="'Page No.'" filter="{ pageno: 'number'}" sortable="'pageno'">
+                        <span editable-text="user.pageno" e-name="pageno" e-form="rowform">
+                        {{user.pageno}}
+                    </td>
+                    <td data-title="'Unit'"  sortable="'unit'">
+                        <span editable-text="user.employeeId.unit" e-name="employeeId.unit" e-form="rowform">
+                        {{user.employeeId.unit}}
+                    </td>
+                    <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveUser($data, user._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                            <!--<input type="text" ng-model="user.break" hidden>-->
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                        </button>
+                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-primary" ng-click="rowform.$show()">
+                        <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                            <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="text" class="form-control" size="15" ng-model="total.total_salary1">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="text" class="form-control" size="15" ng-model="total.total_employee_pf1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="15" ng-model="total.total_employee_fp1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="15" ng-model="total.total_employer_pf1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="15" ng-model="total.total_employer_fp1">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->
+</div>
+</div>

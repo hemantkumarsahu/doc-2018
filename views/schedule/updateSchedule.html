@@ -1,0 +1,174 @@
+<h3 class="page-title">
+</h3>
+
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<i class="fa fa-angle-right"></i>
+			<a href="">Update Schedule</a>
+		</li>
+	</ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>
+<div>
+	<!-- <div>Hospital Name</div> -->
+		<div>
+			<table class="table">
+				<tr ng-repeat="h in data">
+					<td><button class="btn btn-default" ng-click=updateSchedule(h)>{{h.name}}</button></td>
+				</tr>
+			</table>
+		</div>
+		<div ng-repeat="h in hospitalList">
+				<button class="btn btn-default" ng-click="displayRecords(h)">{{h.startDate}} to {{h.endDate}}</button><br>
+		</div>
+	<!-- </div> -->
+</div>
+<br><br>
+<div class="row">
+	<div class="col-xs-2">{{hospname}}</div>
+	<div class="col-xs-10">
+		<table style="margin: 10px 10px;" ng-show="daysList.days">
+			<tr>
+				<td style="padding: 5px 0; padding-right: 13px;">Sunday</td>
+				<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Sunday">
+					<select name="start" id="start" ng-model="timing.start">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select> - 
+					<select name="end" id="end" ng-model="timing.end">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select>
+					<button style="padding: 1px 8px; margin-left: 5px;" type="button" 
+					class="btn btn-danger" ng-click="daysList.days.Sunday.splice($index, 1)">x</button>
+					<span ng-if="$index!=daysList.days.Sunday.length-1"> &&nbsp;</span>
+				</td>
+				<td style="padding: 3px 0;">
+					<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Sunday.push({})">+</button>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="padding: 5px 0; padding-right: 13px;">Monday</td>
+				<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Monday">
+					<select name="start" id="start" ng-model="timing.start">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select> - 
+					<select name="end" id="end" ng-model="timing.end">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select>
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Monday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Monday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Monday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Tuesday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Tuesday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Tuesday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Tuesday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Tuesday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Wednesday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Wednesday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" />
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Wednesday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Wednesday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Wednesday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Thursday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Thursday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Thursday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Thursday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Thursday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Friday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Friday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Friday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Friday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Friday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Saturday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in daysList.days.Saturday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="daysList.days.Saturday.splice($index, 1)">x</button>
+						<span ng-if="$index!=daysList.days.Saturday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="daysList.days.Saturday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td><button style="padding: 8px 8px;" type="button" class="btn btn-info" ng-click="updateByDate(daysList)">Update</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>

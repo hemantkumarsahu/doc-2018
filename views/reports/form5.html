@@ -1,0 +1,53 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-green-sharp">
+            <i class=" icon-layers font-green"></i>
+            <span class="caption-subject bold uppercase">Form 5</span>
+            <span class="caption-helper hide"></span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12" align="center">
+                <div class="form-group">
+                    <label class="control-label">Printer &nbsp;</label>
+                    <input id="screen" name="screen" ng-model="form5Model.outputType" type="radio" value="printer">
+                    <label class="control-label">&nbsp;&nbsp;&nbsp;Screen</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="form5Model.outputType" type="radio" value="range">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Monthwise &nbsp;</label>
+                    <input id="monthwise" name="monthwise" ng-model="form5Model.outputCriteria" type="radio" value="monthWise" ng-click="toggleMonth(true)">
+                    <label class="control-label">&nbsp;&nbsp;&nbsp;PF. No. wise</label>
+                    <input id="monthwise" name="monthwise" ng-model="form5Model.outputCriteria" type="radio" value="pfNoWise" ng-click="toggleMonth(false)">
+                </div>
+                <div class="form-group" ng-show="selectedMonthBoolean == false">
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-3">
+                            <label class="control-label">Starting No. &nbsp;</label>
+                        </div>
+                        <div class="col-sm-1">
+                            <input id="start" name="start" ng-model="form5Model.start" type="number" size="5" value="start">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-3">
+                            <label class="control-label">Ending No.&nbsp;</label>
+                        </div>
+                        <div class="col-sm-1">
+                            <input id="end" name="end" ng-model="form5Model.end" type="number" size="5" value="pfNoWise">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="selectedMonthBoolean">
+                    <label class="control-label">Form 5 for the Month &nbsp;</label>
+                    <input id="selectedMonth" name="selectedMonth" max="12" min="1" ng-model="form5Model.selectedMonth" type="number">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="form5()">Submit</button>
+                    <button class="btn btn-primary" ng-click="close()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

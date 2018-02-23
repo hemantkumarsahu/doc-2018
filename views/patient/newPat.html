@@ -1,0 +1,67 @@
+<div class="row create_div">
+	<form action="#" class="form-horizontal" role="form">
+		<!-- <div class="form-group">
+			<label class="control-label col-md-3">Select Hospital</label>
+			<div class="col-md-6">
+				<select class="form-control" name="hospital_name" id="hospital_name" ng-model="avai.hospital_name">
+					<option ng-repeat="option in data" value="{{option.hospital_name}}">{{option.hospital_name}}</option>
+				</select>
+			</div>
+		</div> -->
+
+		<div class="form-group">
+			<label class="control-label col-md-3">Date</label>
+			<div class="col-md-9">
+				<!-- <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+					<input type="text" class="form-control" readonly>
+					<span class="input-group-btn">
+						<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+					</span>
+				</div> -->
+				<div class="input-group input-medium date date-picker">
+					<input type="text" class="form-control" ng-model="avai.date" uib-datepicker-popup="{{format}}" style="width: 200;" id="date" is-open="popup_date.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly/>
+					<span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="date()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+				</div>
+
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Slot From</label>
+			<div class="col-md-6">
+				<div class="input-group">
+					<input type="text" id="slotfrom" class="form-control" ng-model="avai.slotfrom"/>
+					<span class="input-group-btn">
+						<button class="btn default" type="button" id="slotfrom_toggle"><i class="fa fa-clock-o"></i></button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Slot To</label>
+			<div class="col-md-6">
+				<div class="input-group">
+					<input type="text" id="slotto" class="form-control" ng-model="avai.slotto"/>
+					<span class="input-group-btn">
+						<button class="btn default" type="button" id="slotto_toggle"><i class="fa fa-clock-o"></i></button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-md-3">No of Patients</label>
+			<div class="col-md-6">
+				<input class="form-control" id="mask_number" type="text" ng-model="avai.patientNo"/>
+
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-6 pull-right">
+				<button type="button" class="btn btn-primary btnradius" ng-click="saveAvai(avai)">Submit</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+

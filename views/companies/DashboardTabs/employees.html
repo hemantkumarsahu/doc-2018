@@ -1,0 +1,73 @@
+<div class="row ng-scope">
+<div class="col-md-6">
+    <div class="btn-group">
+        <button id="sample_editable_1_new" class="btn sbold green" ui-sref="app.addCompany" > Add New
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+</div>
+<br>
+<br>
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+       
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        
+                  <!--       <div class="col-md-6">
+                            <div class="btn-group pull-right">
+                                <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-print"></i> Bulk Add Companies </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" ui-sref="app.addCompany">
+                                            <i class="fa fa-file-pdf-o"></i> Add single company</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+         
+            <table ng-table="tableParams" class="table" show-filter="true">
+                <tr ng-repeat="user in users">
+                    <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                        {{user.name}}
+                    </td>
+                    <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                        {{user.name}}
+                    </td>
+                    <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                        {{user.name}}
+                    </td>
+                    <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                        {{user.name}}
+                    </td>
+                    <td data-title  ="'Age'" filter="{ age: 'number'}" sortable="'age'">
+                        {{user.age}}
+                    </td>
+                    <td data-title="'Actions'" >
+                        <a href="#" ui-sref="app.editCompany">Edit</a> | <a href="#" ui-sref="app.editCompany">Dactivate</a>
+                    </td>
+                </tr>
+            </table>  
+
+
+        </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+

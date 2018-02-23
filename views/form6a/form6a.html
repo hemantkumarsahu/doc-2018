@@ -1,0 +1,39 @@
+<div class="portlet light bordered">
+    <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'"></div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject bold uppercase">Form 6A</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <!--<button class="btn btn-primary pull-right" ng-click="refresh()">
+                            Refresh
+                </button>-->
+                    <div class="row">
+                        <div class="col-md-8 pull-right">
+                            <div class="form-group">
+                                <label class="control-label">Order By :</label>
+                                <label class="control-label">
+                                <input type="radio" value="pfNumber" ng-model="orderBy"> Pf Code </label>
+                                <label class="control-label">
+                                <input type="radio" value="name" ng-model="orderBy"> Name</label>
+                                <label class="control-label">
+                                    <button class="btn btn-primary" ng-click="letsHaveForm6a(orderBy)">Ok</button>
+                                </label>
+                                <label class="control-label">
+                                    <button class="btn">Cancel</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="showForm6a">
+                    <iframe src="http://localhost:3000/test.pdf" width="1000px" height="500px" scrolling="auto"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

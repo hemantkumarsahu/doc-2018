@@ -1,0 +1,43 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-green-sharp">
+            <i class=" icon-layers font-green"></i>
+            <span class="caption-subject bold uppercase">Yearly Summary</span>
+            <span class="caption-helper hide"></span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12" align="center">
+                <div class="form-group">
+                    <label class="control-label pull-left">Report Type :</label>
+                    <label class="control-label">Combine</label>
+                    <input id="screen" name="screen" ng-model="yearlySummarryModel.options" type="radio" value="printer" ng-click="checkbox1()">
+                    <label class="control-label">Unitwise</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="yearlySummarryModel.options" type="radio" value="file" ng-click="checkbox1()">
+                </div>
+                <div class="form-group">
+                    <label class="control-label pull-left">Only Wages :</label>
+                    <label class="control-label">Yes</label>
+                    <input id="screen" name="screen" ng-model="yearlySummarryModel.onlyWages" type="radio" value="printer" ng-click="checkbox1()">
+                    <label class="control-label">No</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="yearlySummarryModel.onlyWages" type="radio" value="file" ng-click="checkbox1()">
+                </div>
+                <div class="form-group">
+                    <label class="control-label pull-left">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <label class="control-label">Details</label>
+                    <input id="screen" name="screen" ng-model="yearlySummarryModel.detailsOption" type="radio" value="printer" ng-click="checkbox1()">
+                    <label class="control-label">Summary</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="yearlySummarryModel.detailsOption" type="radio" value="file" ng-click="checkbox1()">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="yearlySummarry()">Submit</button>
+                    <button class="btn btn-primary" ng-click="close()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

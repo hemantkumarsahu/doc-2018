@@ -1,0 +1,44 @@
+<!-- BEGIN MAIN CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN: ACCORDION DEMO -->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="fa fa-files-o font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">My Files</span>
+                    <span class="caption-helper hide"></span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="portlet-body">
+                    <table ng-table="tableParams" show-filter="true" class="table table-striped table-bordered table-hover table-checkable order-column" id="managed_datatable">
+                        <tbody>
+                            <tr class="odd gradeX" ng-repeat="file in $data">
+                                <td title="'Sr.No.'">{{$index+1}}</td>
+                                <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">{{file.name}}</td>
+                                <td title="'Description'" filter="{ description: 'text'}" 
+                                    sortable="'description'">{{file.description}}</td>
+                                <td title="'Templates'" filter="{ templates: 'text'}" sortable="'templates'">{{file.templates}}</td>
+                                <td title="'Date Created'" filter="{ createdAt: 'text'}" 
+                                    sortable="'createdAt'">{{file.createdAt | date : "MMM dd, yyyy - hh:mm:ss"}}</td>
+                                <td title="'Views'" sortable="'clicks.length'">{{file.clicks && file.clicks.length || 0}}</td>
+                                <td>
+                                    <button ng-click="getURLs(file)" class="btn default btn-xs green-stripe">
+                                        Download
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+// call any jquery or angularjs code ehre
+</script>
+<!-- BEGIN MAIN JS -->

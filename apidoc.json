@@ -1,0 +1,8 @@
+{
+  "name": "pdfZombie API documentation",
+  "version": "1.0.0",
+  "description": "API documentation for generating pdf from templates",
+  "template": {
+    "forceLanguage": "en"
+  }
+}

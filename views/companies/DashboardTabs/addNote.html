@@ -1,0 +1,73 @@
+<style>
+::-webkit-scrollbar {
+    display: none;
+}
+</style>
+<div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()">
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <button class="btn btn-primary ng-scope" ng-click="open();">Add Note</button>
+    </div>
+</div>
+<br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+           
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <span class="caption-subject font-green bold uppercase">Notes</span>
+                    </div>
+                </div>
+                <div class="portlet-body" style="overflow-y:scroll; height:400px;  >
+                    <div class=" slimScrollDiv " style="position: absolute; overflow: hidden; ">
+                        <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+                            <div class="general-item-list ">
+                                <div class="item " ng-repeat="msg in messages ">
+                                    <div class="item-head ">
+                                        <div class="item-details ">
+                                            <img class="item-pic rounded " ng-src="{{imgurl}} ">
+                                            <span class="item-name primary-link ">{{msg.byUserID.firstName}}</span>
+                                        </div>
+                                        <span class="item-status ">
+                                        <span class="item-label ">{{moment(msg.createdAt)}}</span></span>
+                                    </div>
+                                    <div class="item-body ">{{msg.note}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="col-xs-6 col-sm-6 col-md-6 ">
+            
+            <div class="portlet light bordered ">
+                <div class="portlet-title ">
+                    <div class="caption caption-md ">
+                        <span class="caption-subject font-green bold uppercase ">Activities</span>
+                    </div>
+                </div>
+                <div class="portlet-body " style="overflow-y:scroll; height:400px;>
+                    <div class="slimScrollDiv" style="position: absolute; overflow: hidden;">
+                        <div class="scroller" style="overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="1" data-handle-color="#D7DCE2" data-initialized="1">
+                            <div class="general-item-list">
+                                <div class="item" ng-repeat="activity in activities">
+                                    <div class="item-head">
+                                        <div class="item-details">
+                                            <img class="item-pic rounded" ng-src="{{imgurl}}">
+                                            <span class="item-name primary-link">{{activity.byUserID.firstName}}</span>
+                                        </div>
+                                        <span class="item-status">
+                                        <span class="item-label">{{moment(activity.createdAt)}}</span></span>
+                                    </div>
+                                    <div class="item-body"> {{activity.message}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- new activity  -->
+        <!-- end here -->
+    </div>

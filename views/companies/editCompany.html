@@ -1,0 +1,247 @@
+<div class="row ng-scope">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'" ng-show="isEdit=='true'"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption font-green-sharp">
+                                <i class=" icon-layers font-green"></i>
+                                <span class="caption-subject bold uppercase">Edit Company</span>
+                                <span class="caption-helper hide"></span>
+                            </div>
+
+                            <button class="btn btn-primary pull-right" ui-sref="app.companies" ng-show="!isEdit=='true'">
+                            Back
+                </button>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active ng-scope">
+                                    <div class="container-fluid container-fullw bg-white ng-scope">
+                                        <div class="row">
+                                            <form role="form" id="editCompany" name="editCompayForm" novalidate ng-submit="updateCompany()">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Name:
+                                                </label>
+                                                            <input type="text" name="name" class="form-control" ng-model="companyModel.name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Address:
+                                                </label>
+                                                            <input type="text" name="address" class="form-control" ng-model="companyModel.address">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Establishment Code:
+                                                </label>
+                                                            <input type="text" name="eastablishmentCode" class="form-control" ng-model="companyModel.eastablishmentCode">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Region Code:
+                                                </label>
+                                                            <input type="text" name="regionCode" class="form-control" ng-model="companyModel.regionCode" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Office Code:
+                                                </label>
+                                                            <input type="text" name="officeCode" class="form-control" ng-model="companyModel.officeCode">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Extension Code:
+                                                </label>
+                                                            <input type="text" name="extensionCode" class="form-control" ng-model="companyModel.extensionCode">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Est ID:
+                                                </label>
+                                                            <input type="text" name="estId" class="form-control" ng-model="companyModel.estId">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Rate of Pf Contribution:
+                                                </label>
+                                                            <input type="text" name="rateOfPfContribution" class="form-control" ng-model="companyModel.rateOfPfContribution">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group ">
+                                                            <label class="control-label">
+                                                    Employer Pension:
+                                                </label>
+                                                            <input type="text" name="emprPens" class="form-control" ng-model="companyModel.emprPens">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Employee Pension:
+                                                </label>
+                                                            <input type="text" name="emplPens" class="form-control" ng-model="companyModel.emplPens">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Year:
+                                                </label>
+                                                            <input type="text" name="year" class="form-control" ng-model="companyModel.year" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Ac2:
+                                                </label>
+                                                            <input type="text" name="ac2" class="form-control" ng-model="companyModel.ac2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Ac21:
+                                                </label>
+                                                            <input type="text" name="ac21" class="form-control" ng-model="companyModel.ac21">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Ac22:
+                                                </label>
+                                                            <input type="text" name="ac22" class="form-control" ng-model="companyModel.ac22">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Retirement Age:
+                                                </label>
+                                                            <input type="text" name="retirementAge" class="form-control" ng-model="companyModel.retirementAge">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    Pens Salary Limit:
+                                                </label>
+                                                            <input type="text" name="pensSalaryLimit" class="form-control" ng-model="companyModel.pensSalaryLimit">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                    PF Salary Limit:
+                                                </label>
+                                                            <input type="text" name="pfSalaryLimit" class="form-control" ng-model="companyModel.pfSalaryLimit">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                DOC:
+                                                            </label>
+                                                            <input type="text" name="doc" class="form-control" ng-model="companyModel.doc">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Group No:
+                                                            </label>
+                                                            <input type="text" name="groupNo" class="form-control" ng-model="companyModel.groupNo">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Min Value(AC2):
+                                                            </label>
+                                                            <input type="text" name="minac2" class="form-control" ng-model="companyModel.minac2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Min Value(AC21):
+                                                            </label>
+                                                            <input type="text" name="minac21" class="form-control" ng-model="companyModel.minac21">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Min Value(AC22):
+                                                            </label>
+                                                            <input type="text" name="minac22" class="form-control" ng-model="companyModel.minac22">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--  <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    State:
+                                                </label>
+                                                <input type="text" name="state" class="form-control" ng-model="companyModel.state">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Zip:
+                                                </label>
+                                                <input type="text" name="zip" class="form-control" ng-model="companyModel.zip" maxlength="5" minlength="5">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                                <br>
+                                                <br>
+                                                <!--  <span ng-show="isEdit=='false'"><button class="btn btn-primary" ng-click="continue()">Continue</button></span> -->
+                                                <span><button class="btn btn-primary" ng-click="updateCompany()">
+                                                    {{(isEdit=='true')?"Update":"Continue"}}  
+                                                </button></span>
+                                            </form>
+                                        </div>
+                                        <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" ng-click="updateProfile()">Update</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="portlet light bordered">
+    <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'"></div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject bold uppercase">Form 3A</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <button class="btn btn-primary pull-right" ng-click="refresh()">
+                            Refresh
+                </button>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">PF Code Range</label>
+                                <input id="pfrange" name="pfrange" ng-model="form3aModel.pfrange" type="checkbox" value="range" ng-click="checkbox1()">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Starting PF Code</label>
+                                <input id="start" name="start" ng-model="form3aModel.start" class="form-control" placeholder="Enter start pf code" type="text"
+                                    value="" ng-disabled="selectedPf">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Ending PF Code</label>
+                                <input id="end" name="end" ng-model="form3aModel.end" class="form-control" placeholder="Enter end pf code" type="text" value=""
+                                    ng-disabled="selectedPf">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: block;">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Selected PF Code</label>
+                                <input id="pfrange" name="pfrange" ng-model="form3aModel.Selected" type="checkbox" value="selectedPf" ng-click="checkbox2()">
+                                <input type="text" class="form-control" ng-model="pfNumber" size="10" uib-tooltip="(Hit Enter Button to
+                                ADD)" ng-disabled="addButton" uib-typeahead="state.pfNumber for state in names4Selection | filter:$viewValue | limitTo:8"  ng-keyup="$event.keyCode == 13 && addSelectedPf(pfNumber)">
+                                <!--<button type="button" class="btn btn-default" ng-click="selectPfAndAdd()" ng-disabled="addButton">Add PF Code</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: block;">
+                        <div class="col-md-6">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tr style="font-weight: bold">
+                                    <td style="width:35%">PF Code</td>
+                                    <td style="width:20%">Name</td>
+                                    <td style="width:20%">Action</td>
+                                </tr>
+                                <tr ng-repeat="user in selectedPfModel">
+                                    <td>
+                                        {{ user.pfNumber}}
+                                    </td>
+                                    <td>
+                                        {{ user.name}}
+                                    </td>
+                                    <td style="white-space: nowrap">
+                                            <button type="button" class="btn btn-danger" ng-click="deleteSelectedPf($index)">del</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group pull-right">
+                                <button type="button" class="btn btn-success" ng-click="generateReportForm3a()">Ok</button>
+                                <button type="reset" class="btn btn-default">cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="col-md-12">
+            <pdfjs-viewer src="http://localhost:3000/form3A.pdf"></pdfjs-viewer>
+        </div>
+    </div>-->
+</div>

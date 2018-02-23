@@ -1,0 +1,263 @@
+<!-- <div class="container-fluid container-fullw bg-white" ng-init="initialize()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class="fa fa-users font-green-sharp"></i>
+                    <span class="caption-subject bold uppercase">Profile</span>
+                    <span class="caption-helper hide"></span>
+                </div>
+                <a class="btn btn-success pull-right btn-circle" ng-click="addUser()">Add User</a>
+            </div>
+            <br>
+            <br>
+            <div class="tabbable">
+                <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+                    <li ng-class="activeTab==0 ? 'active' : ''" ng-click="activeTab=0">
+                        <a>
+                             Overview
+                        </a>
+                    </li>
+                    <li ng-class="activeTab==1 ? 'active' : ''" ng-click="activeTab=1">
+                        <a>
+                              Edit Account
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active active" id="off-users" ng-show="activeTab==0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="user-left">
+                                    <div class="center">
+                                    </div>
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Contact Information</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>User Name:</td>
+                                                <td class="capitalize">
+                                                    {{myProfile.first_name+ ' '+myProfile.last_name}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>
+                                                    {{myProfile.email}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Type:</td>
+                                                <td class="capitalize">
+                                                    {{myProfile.type}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>RaterSpot Integration Key:</td>
+                                                <td>{{user._id}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="off-favorites" ng-show="activeTab==1">
+                        <form role="form" id="form" name="myProfileForm" novalidate ng-submit="updateUserProfile()">
+                            <fieldset>
+                                <legend>
+                                    Account Info
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>
+                                                First Name</span>
+                                            </label>
+                                            <input type="text" placeholder="Enter your first name" class="form-control" name="first_name" ng-model="myProfile.first_name" >
+                                            <div ng-messages="myProfileForm.first_name.$error" ng-if="myProfileForm.first_name.$dirty">
+                                                <div ng-message="">First Name is </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                Last Name</span>
+                                            </label>
+                                            <input type="text" placeholder="Enter your last name" class="form-control" name="last_name" ng-model="myProfile.last_name" >
+                                            <div ng-messages="myProfileForm.last_name.$error" ng-if="myProfileForm.last_name.$dirty">
+                                                <div ng-message="">Last Name is </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email:</label>
+                                            <input type="email" name="email" class="form-control" ng-model="myProfile.email" >
+                                            <div ng-messages="myProfileForm.email.$error" ng-if="myProfileForm.email.$dirty">
+                                                <div ng-message="">Email is </div>
+                                                <div ng-message="email">Enter valid email</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Type:</label>
+                                            <select type="text" name="type" class="form-control" ng-model="myProfile.type" >
+                                                <option value="">Select Type</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                            </select>
+                                            <div ng-messages="myProfileForm.type.$error" ng-if="myProfileForm.type.$dirty">
+                                                <div ng-message="">Type is </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <button class="btn btn-primary">Update Profile</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div> -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <i class=" icon-layers font-green"></i>
+                    <span class="caption-subject bold uppercase">Profile Details</span>
+                    <span class="caption-helper hide"></span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <div class="tab-pane active ng-scope">
+                        <div class="container-fluid container-fullw bg-white ng-scope">
+                            <div class="row">
+                                <form role="form" id="form" name="myProfileForm" novalidate ng-submit="updateProfile()">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    First Name:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.firstName">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Middle Initial:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.middleInitial">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Last Name:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.lastName">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Display Name:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.name" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Phone No:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.phoneNo" maxlength="10">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Fax No:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.faxNo">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Email:
+                                                </label>
+                                                <input type="text" name="name" class="form-control" ng-model="myProfile.email" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Address Line 1:
+                                                </label>
+                                                <input type="text" name="address1" class="form-control" ng-model="myProfile.address1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label class="control-label">
+                                                    Address Line 2:
+                                                </label>
+                                                <input type="text" name="address2" class="form-control" ng-model="myProfile.address2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    City:
+                                                </label>
+                                                <input type="text" name="city" class="form-control" ng-model="myProfile.city">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    State:
+                                                </label>
+                                                <input type="text" name="state" class="form-control" ng-model="myProfile.state">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Zip:
+                                                </label>
+                                                <input type="text" name="zip" class="form-control" ng-model="myProfile.zip" maxlength="5" minlength="5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-primary">Update Profile</button>
+                                </form>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" ng-click="updateProfile()">Update</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,187 @@
+<h3 class="page-title">
+</h3>
+
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<i class="fa fa-angle-right"></i>
+			<a href="">Create Schedule</a>
+		</li>
+	</ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>
+<div class="row">
+	<div class="col-sm-2">Hospital Name</div>
+		<div class="col-sm-4">
+			<select name="year" id="year" class="form-control" ng-model="hos.id" ng-change="selectAction(hos)" >
+				<option value="">Select</option>
+				<option ng-repeat="d in data " value="{{d._id}}">{{d.name}}</option>
+			</select>
+		</div>
+	<div class="col-sm-2">Select Date</div>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="daterange"  name="daterange"/>
+		</div>
+</div>
+
+<br><br>
+<div class="row">
+	<div class="col-xs-2">{{hospname}}</div>
+	<div class="col-xs-10">
+		<table style="margin: 10px 10px;" ng-show="shcedule.days">
+			<tr>
+				<td style="padding: 5px 0; padding-right: 13px;">Sunday</td>
+				<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Sunday">
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -->
+					<select name="start" id="start" ng-model="timing.start">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select> - 
+					<select name="end" id="end" ng-model="timing.end">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select>
+					<!-- <input type="text" ng-model="timing.end" size="3" /> -->
+					<!-- <span ng-model-click="shcedule.days.Sunday.splice($index, 1)"> X </span> -->
+					<button style="padding: 1px 8px; margin-left: 5px;" type="button" 
+					class="btn btn-danger" ng-click="shcedule.days.Sunday.splice($index, 1)">x</button>
+					<span ng-if="$index!=shcedule.days.Sunday.length-1"> &&nbsp;</span>
+				</td>
+				<td style="padding: 3px 0;">
+					<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Sunday.push({})">+</button>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="padding: 5px 0; padding-right: 13px;">Monday</td>
+				<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Monday">
+					<select name="start" id="start" ng-model="timing.start">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select> - 
+					<select name="end" id="end" ng-model="timing.end">
+						<option ng-repeat="option in values">{{option}}</option>
+					</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" /> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Monday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Monday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Monday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Tuesday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Tuesday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3"/> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Tuesday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Tuesday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Tuesday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Wednesday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Wednesday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" /> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Wednesday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Wednesday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Wednesday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Thursday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Thursday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" /> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Thursday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Thursday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Thursday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Friday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Friday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" /> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Friday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Friday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Friday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding: 5px 0; padding-right: 13px;">Saturday</td>
+					<td style="padding: 5px 0;" ng-repeat="timing in shcedule.days.Saturday">
+						<select name="start" id="start" ng-model="timing.start">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select> - 
+						<select name="end" id="end" ng-model="timing.end">
+							<option ng-repeat="option in values">{{option}}</option>
+						</select>
+					<!-- <input type="text" ng-model="timing.start" size="3"/> -  
+						<input type="text" ng-model="timing.end" size="3" /> -->
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-danger" ng-click="shcedule.days.Saturday.splice($index, 1)">x</button>
+						<span ng-if="$index!=shcedule.days.Saturday.length-1"> & &nbsp;</span>
+					</td>
+					<td style="padding: 3px 0;">
+						<button style="padding: 1px 8px; margin-left: 5px;" type="button" class="btn btn-info" ng-click="shcedule.days.Saturday.push({})">+</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td><button style="padding: 8px 8px;" type="button" class="btn btn-info" ng-click="saveSchedule(daterange)">Add</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>

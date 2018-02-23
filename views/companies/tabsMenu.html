@@ -1,0 +1,124 @@
+<!--<div class="portlet-title">-->
+<div class="caption" style="color:#fff;font-size: 18; border: 1px; margin:2px;">
+    <button style="background-color:orange;" class="btn btn-outline" ui-sref="app.dataEntry 
+({companyId: (company._id)?company._id:companyId})">Data Entry</button>
+    <span class="caption-helper hide"></span>
+</div>
+<div class="caption" style="color:#fff;font-size: 18; border: 1px; margin:2px;">
+    <button style="background-color:orange;" class="btn btn-outline" ui-sref="app.master({companyId: (company._id)?company._id:companyId})">Master</button>
+    <span class="caption-helper hide"></span>
+</div>
+<div class="caption" style="color:#fff;font-size: 18; border: 1px; margin:2px;">
+    <button style="background-color:orange;" class="btn btn-outline" ui-sref="app.editCompany({companyId: (company._id)?company._id:companyId,isEdit:true})">Company Details</button>
+    <span class="caption-helper hide"></span>
+</div>
+<div class="caption" style="color:#fff;font-size: 18; border: 1px; margin:2px;">
+    <button style="background-color:orange;" class="btn btn-outline" ui-sref="app.form3a({companyId: (company._id)?company._id:companyId})">Form 3A</button>
+    <span class=" caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline" ui-sref="app.form6a({companyId: (company._id)?company._id:companyId})">Form 6A</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline" ng-click="callModalService('challan.html','md')">Challan</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline " ui-sref="app.recon({companyId: (company._id)?company._id:companyId})">Recons.</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline " ui-sref="app.import({companyId: (company._id)?company._id:companyId})">Import</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline " ui-sref="app.importEmployee({companyId: (company._id)?company._id:companyId})">Import Employee</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline ">ECR</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline ">Add Note</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption " style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline ">Employees</button>
+    <span class="caption-helper hide "></span>
+</div>
+<div class="caption btn-group" style="color:#fff;font-size: 18; border: 1px; margin:2px; ">
+    <button style="background-color:orange; " class="btn btn-outline dropdown-toggle" data-toggle="dropdown">
+        Reports
+        <i class="fa fa-angle-down "></i>
+    </button>
+    <span class="caption-helper hide "></span>
+    <ul class="dropdown-menu">
+        <li>
+            <a href="javascript:;" ng-click="reportService.exportToExcel(companyId)">
+                <i class="fa fa-file-excel-o"></i> Employee List </a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('challan.html','md')">
+                <i class="fa fa-file-excel-o"></i>Challan</a>
+        </li> 
+        <li>
+            <a href="javascript:;" ui-sref="app.recon({companyId: (company._id)?company._id:companyId})">
+                <i class="fa fa-file-excel-o"></i>Recon</a>
+        </li>
+          <li>
+            <a href="javascript:;" ng-click="callModalService('monthlySummary.html','md')">
+                <i class="fa fa-file-excel-o "></i>Monthly Summary</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('unitwiseMonthlySumm.html','md')">
+                <i class="fa fa-file-excel-o "></i>Monthly Unit Wise Information</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('yearlySummary.html','md')">
+                <i class="fa fa-file-excel-o "></i>Yearly Summary</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('form9.html','md')">
+                <i class="fa fa-file-excel-o"></i>Form 9</a>
+        </li> 
+        <li>
+            <a href="javascript:;" ng-click="callModalService('form5.html','md')">
+                <i class="fa fa-file-pdf-o "></i> Form 5</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('form10.html','md')">
+                <i class="fa fa-file-excel-o"></i>Form 10</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('Form7ps.html','md')">
+                <i class="fa fa-file-excel-o "></i>Form 7Ps</a>
+        </li> 
+        <li>
+            <a href="javascript:;" ng-click="callModalService('Form5Ps.html','md')">
+                <i class="fa fa-file-excel-o "></i>Form 5Ps</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('Form4Ps.html','md')">
+                <i class="fa fa-file-excel-o "></i>Form 4Ps</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="callModalService('Form3Ps.html','md')">
+                <i class="fa fa-file-excel-o "></i>Form 3Ps</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="reportService.importNewRegistationHash(companyId,year_)">
+                <i class="fa fa-file-excel-o "></i>New Employee Bulk</a>
+        </li>
+        <li>
+            <a href="javascript:;" ng-click="reportService.bulkKYC(companyId,year_)">
+                <i class="fa fa-file-excel-o "></i>KYC Bulk</a>
+        </li>
+        <li><!-- ng-click="reportService.bulkExit(companyId,year_)" -->
+            <!-- <a href="{{exitUrl}}" download> -->
+                 <a href="javascript:;" ng-click="reportService.bulkExit(companyId,year_)">
+                    <i class="fa fa-file-excel-o "></i>Exit Employee Bulk</a>
+        </li>
+    </ul>
+</div>

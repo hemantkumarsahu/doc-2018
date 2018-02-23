@@ -1,0 +1,178 @@
+
+
+<div class="row ng-scope" ng-init="dataEntry.selected='monthly'">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase"> Data Entry</span>
+                </div>
+                <div class="actions" >
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn dark btn-outline btn-circle btn-sm">
+                                <input type="radio" value="monthly" name="options" ng-model="dataEntry.selected" class="toggle" id="option1">Monthly</label>
+                            <label class="btn dark btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" ng-model="dataEntry.selected" value="yearly" class="toggle" id="option2">Yearly</label>
+                            <label class="btn dark btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" ng-model="dataEntry.selected" value="list" class="toggle" id="option3">List</label>
+                        </div>
+                </div><!--  -->
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    
+
+
+                    <div class="row" ng-show="dataEntry.selected=='monthly'">
+                        <div class="container-fluid container-fullw bg-white ng-scope" ng-init="getMessages()">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                   
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption caption-md">
+                                                <span class="caption-subject font-green bold uppercase">Employee's Monthly pf entries</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body" style="overflow-y:scroll; height:400px;">
+                                            <div class=" slimScrollDiv " style="position: absolute; overflow: hidden; ">
+                                                <div class="scroller " style="overflow: hidden; width: auto; " data-always-visible="1 " data-rail-visible1="1 " data-handle-color="#D7DCE2 " data-initialized="1 ">
+                                                    
+                                                    <form class="form-horizontal" role="form" method="POST" action="http://localhost/pfadmin/pf_entries/monthly_save">
+                                            <div class="form-body">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Select Month</label>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group input-medium date date-picker-month" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">
+                                                            <input type="text" class="form-control" readonly="" id="monthYear" style="width: 277px;" name="monthYear" value="">
+                                                            <span style="width: 10px;" class="input-group-btn">
+                                                                <button class="btn default" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Enter PF Number</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="employees PF Number" id="pfNumber" name="pfNumber" value="" onkeyup="getInfo(1)" onblur="getInfo(1)"> </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Enter UAN</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Employee's UAN" id="uan" name="uan" value=""> </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Name</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Employee name" id="name" name="name" value="" readonly="readonly"> </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Break</label>
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" placeholder="Enter if any break" id="break" name="break" value="" max="31" min="0"> </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">Salary</label>
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" placeholder="Enter salary" id="salary" name="salary" onkeyup="contribution()" onchange="contribution()" value="" min="0"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions right1" style="padding-left: 10px;">
+                                                <button type="submit" class="btn purple">Save Pf Entry</button>
+                                                <button type="button" class="btn default">Cancel</button>
+                                            </div>
+                                        </form>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 ">
+                                    
+                                    <div class="portlet light bordered ">
+                                        <div class="portlet-title ">
+                                            <div class="caption caption-md ">
+                                                <span class="caption-subject font-green bold uppercase ">WAGES</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body " style="overflow-y:scroll; height:400px;>
+                                            <div class="slimScrollDiv" style="position: absolute; overflow: hidden;">
+                                                <div class="scroller" style="overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="1" data-handle-color="#D7DCE2" data-initialized="1">
+                                                   
+
+                                                    <div class="portlet-body">
+                                        <div class="tab-content">
+                                            <ul>
+                                                <li> Employee's contribution
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                PF : 12.000 %
+                                                            </span>
+                                                        <input type="text" class="form-control" id="employeesPf" readonly="readonly"> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                Pens : 0.000 %
+                                                            </span>
+                                                        <input type="text" class="form-control" id="employeesFp" readonly="readonly"> </div>
+                                                    </div>
+                                                </li>
+                                                <li> Employer's contribution
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                PF : 12.000 %
+                                                            </span>
+                                                        <input type="text" class="form-control" id="employersPf" readonly="readonly"> </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                Pens : 8.330 %
+                                                            </span>
+                                                        <input type="text" class="form-control" id="employersFp" readonly="readonly"> </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- new activity  -->
+                                <!-- end here -->
+                            </div>
+                        </div>
+
+                 
+
+
+
+
+
+
+                    </div>
+                </div>
+         
+        
+        </div>
+        </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+

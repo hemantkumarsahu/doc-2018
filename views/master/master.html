@@ -1,0 +1,42 @@
+        <div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'"></div>
+            <div class="portlet-body">
+                <div class="tabbable" ng-init="!activeTab?activeTab=0:''">
+                    <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue">
+                        <li ng-class="activeTab==0 ? 'active' : ''" ng-click="activeTab=0" class="" style="">
+                            <a>
+                             Employee Information
+                        </a>
+                        </li>
+                        <li ng-class="activeTab==1 ? 'active' : ''" ng-click="activeTab=1" class="" style="">
+                            <a>
+                              KYC
+                        </a>
+                        </li>
+                        <li ng-class="activeTab==2 ? 'active' : ''" ng-click="activeTab=2" class="" style="">
+                            <a>
+                             List
+                        </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==0" ng-include="'views/master/masterTabs/employeeInformation.html'" style="" ng-focus="employee={}">
+                        </div>
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==1" ng-include="'views/master/masterTabs/kyc.html'" style="">
+                        </div>
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==2" ng-include="'views/master/masterTabs/masterList.html'" style="" ng-init="getAllEmployeeMaster()">
+                        </div>
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==3" ng-include="'views/companies/DashboardTabs/addNote.html'" style="">
+                        </div>
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==4" ng-include="'views/companies/DashboardTabs/form3a.html'" style="">
+                        </div>
+                        <div class="tab-pane active ng-scope ng-hide" ng-show="activeTab==5" ng-include="'views/companies/DashboardTabs/form6a.html'" style="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,302 @@
+<h3 class="page-title">
+	
+</h3>
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+            <i class="fa fa-angle-right"></i>
+			<a href="#/ng_doctor.html">Doctor</a>
+			
+		</li>
+		
+	</ul>
+	
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+ <div ng-spinner-bar class="page-spinner-bar">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+ </div>
+
+
+ <div class="row">
+ 		<div class="col-md-12">
+ 			<div class="portlet light bordered">
+ 				 <div class="portlet-body">
+
+
+		 				<div class="col-md-6">
+		 						<button type="button" class="btn btn-info btnradius " data-toggle="modal" data-target="#myModal">Add Doctor</button>
+		 				</div>
+		 				<div class="col-md-6">
+		 					<button ng-click="refreshNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+		 				</div>
+		 				<br>
+
+		 				<div class="row">
+
+
+			                    <table ng-table="tableParams" class="table table-bordered" show-filter="showFilter">
+			                        <tr ng-repeat="doct in doctorList">
+			                            <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+              							<span editable-text="doct.name" e-name="name" e-form="rowform">
+               								 {{doct.name}}
+              								</td>
+
+			                            <td data-title="'Email'" filter="{ 'email': 'text'}" sortable="'speciality'">
+                 						 <span editable-text="doct.email" e-name="email" e-form="rowform">
+                   								 {{doct.email}}
+                						  </td>
+
+			                             <td data-title="'User Name'">
+			                              <span editable-text="doct.username" e-name="username" e-form="rowform">
+			                                {{doct.username}}
+			                              </td>
+
+			                               <td data-title="'Gender'">
+			                              <span editable-text="doct.gender" e-name="gender" e-form="rowform">
+			                                {{doct.gender}}
+			                              </td>
+
+			                              <td data-title="'Birth Date'">
+			                              <span editable-text="doct.dateofbirth" e-name="dateofbirth" e-form="rowform">
+			                                {{doct.dateofbirth}}
+			                              </td>
+
+			                           <!--  <td data-title="'Address'" >
+			                                <span editable-text="doct.address.city" e-name="address" e-form="rowform">
+			                                  {{doct.address.city}}
+			                                </td> -->
+			                            
+			                              
+			                              <td data-title="'Qualification'">
+			                              <span ng-repeat="deg in doct.degreeID" editable-text="doct.degreeID" e-name="qualification" e-form="rowform">
+			                                {{deg.name}}
+			                               
+			                              </td>
+
+
+
+			                                <td style="white-space: nowrap">
+			                                    
+			                                   
+			                                     
+			                                        
+			                              
+			                                    <div class="buttons" ng-show="!rowform.$visible">
+			                                      <!-- <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit btnradius"></span></button> -->
+
+			                                      <button type="buttom" class="btn btn-primary"	ng-click="editDoctorDetails(doct._id)" data-toggle="modal" data-target="#myModal">
+			                                        <span class="glyphicon glyphicon-ok-circle"></span>
+			                                      </button>
+			                                      <button class="btn btn-danger" ng-click="deleteDoctor(doct._id)">del</button>
+			                                    </div>
+			                                  </td>
+			                                </tr>
+			                    </table>
+</div>  
+ <!-- Add Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Doctor Details</h4>
+        </div>
+        <div class="modal-body">
+        	<form name="doctorfrm">
+		          <div class="row">
+		          		<!-- <input type="hidden" name="_id" ng-model="doctor._id" > -->
+		          		<div class="col-sm-2">Name:</div>
+		          		<div class="col-md-4">
+		          			<input type="text" name="name" id="name" ng-model="doctor.name" only-letters-input class="form-control" required />
+
+		          			 <span ng-show="doctorfrm.name.$error.required && doctorfrm.name.$touched" style="color: red;">This field is required</span>
+
+                             <span ng-show="doctorfrm.name.$error.onlyLettersInput">Enter only charactors</span>
+		          		</div>
+		          		<div class="col-sm-2">Email:</div>
+		          		<div class="col-md-4">
+		          			<input type="email" name="email" id="email" ng-model="doctor.email" class="form-control" required />
+
+		          			 <span ng-show="doctorfrm.email.$error.required && doctorfrm.email.$touched"  style="color:red">This field is required</span> 
+                            <span ng-show="doctorfrm.email.$error.email" style="color: red">Please enter valid email</span> 
+		          		</div>
+
+		          </div> <br>
+
+		          <div class="row">
+		          		<div class="col-sm-2">UserName:</div>
+		          		<div class="col-md-4">
+		          			<input type="text" name="username" id="username" ng-model="doctor.username" class="form-control" required />
+
+		          			 <span ng-show="doctorfrm.username.$error.required && doctorfrm.username.$touched" style="color: red;">This field is required</span>
+
+
+		          		</div>
+		          		<div class="col-sm-2" ng-hide="passname">Password:</div>
+		          		<div class="col-md-4" ng-hide="pass">
+		          			<input type="password" name="password" id="password" ng-model="doctor.password" class="form-control" ng-minlength="6" ng-maxlength="10" required />
+
+							<span ng-show="doctorfrm.password.$error.pattern" style="color: red">Password Should Aplhanumeric</span>
+                          <span ng-show="doctorfrm.password.$error.required && doctorfrm.password.$touched" style="color: red;">This field is required</span>
+                          <span ng-show="doctorfrm.password.$error.minlength" style="color:red;">Too Short</span>
+                          <span ng-show="doctorfrm.password.$error.maxlength" style="color:red;">Too Long</span>
+
+		          		</div>
+
+		          </div> <br>
+
+		          <div class="row">
+		          		<div class="col-sm-2">Gender:</div>
+			          		<div class="col-md-4">
+			          			<select name="gender" id="gender" class="form-control" ng-model="doctor.gender" required>
+			          					<option value="">Select</option>
+			          					<option value="male">Male</option>
+			          					<option value="female">Female</option>
+			          			</select>
+			          		</div>
+		          		<div class="col-sm-2">Birth Date:</div>
+		          		<div class="col-md-4">
+		          			 
+		          			<!-- <div class="input-group input-medium date date-picker">
+                                                     <input type="text" class="form-control" ng-model="doctor.dateofbirth" uib-datepicker-popup="{{format}}" style="width:231px;" id="date" is-open="popup_date.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" readonly/>
+                                        <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="dateDoct()"><i class="glyphicon glyphicon-calendar"></i></button></span>
+                                    </div> -->
+
+                                    <div class='input-group date' id='dateofbirth'>
+                                        <input class="form-control" id="dateofbirth" name="dateofbirth" type="text" ng-model="doctor.dateofbirth" required />
+                                         <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+		          		</div>
+
+		          </div> <br>
+		          <div class="row">
+		          	<div class="col-md-12">
+		          			<fieldset>
+   								 <legend>Address</legend>
+   								 	<div class="row">
+    									<div class="col-sm-2">Building No </div>
+    									<div class="col-md-4">
+    										<input type="text" id="building" class="form-control" name="building" ng-model="doctor.address.building" required />
+											
+											<span ng-show="doctorfrm.building.$error.required && doctorfrm.building.$touched" style="color:red;">This field is required</span>
+
+    									</div>
+
+    									<div class="col-sm-2">Street </div>
+    									<div class="col-md-4">
+    										<input type="text" id="street" class="form-control" name="street" ng-model="doctor.address.street" required />
+
+    										<span ng-show="doctorfrm.street.$error.required && doctorfrm.street.$touched" style="color:red;">This field is required</span>
+    									</div>
+
+    								</div><br>
+
+    								<div class="row">
+    									<div class="col-sm-2">City</div>
+    									<div class="col-md-4">
+    										<input type="text" id="city" class="form-control" name="city" ng-model="doctor.address.city" required />
+
+    										<span ng-show="doctorfrm.city.$error.required && doctorfrm.city.$touched" style="color:red;">This field is required</span>
+
+    									</div>
+
+    									<div class="col-sm-2">State </div>
+    									<div class="col-md-4">
+    										<input type="text" id="state" class="form-control" name="state" ng-model="doctor.address.state" required />
+
+
+    										<span ng-show="doctorfrm.state.$error.required && doctorfrm.state.$touched" style="color:red;">This field is required</span>
+
+    									</div>
+
+    								</div><br>
+    								<div class="row">
+    									<div class="col-sm-2">Zip Code</div>
+    									<div class="col-md-4">
+    										<input type="text" id="zipcode" class="form-control" name="zipcode" ng-model="doctor.address.zipcode" required />
+
+    										<span ng-show="doctorfrm.zipcode.$error.required && doctorfrm.zipcode.$touched" style="color:red;">This field is required</span>
+
+    									</div>
+
+    									<!-- <div class="col-sm-2">State </div>
+    									<div class="col-md-4">
+    										<input type="text" id="state" class="form-control" name="state" ng-model="doctor.state">
+    									</div> -->
+
+    								</div>
+    									
+
+  							</fieldset>
+  						</div>
+
+		          </div><br>
+		          <div class="row">
+		          	<div class="col-md-12">
+		          			<fieldset>
+    								<legend>Qualification</legend>
+    								<div class="row">
+		  									 <div class="col-sm-2">Degree</div>
+		  									 <div class="col-md-4">
+		  									 		<select  id="degree" class="form-control" name="degree" ng-model="doctor.degreeID" multiple required >
+		  									 			
+		  									 			<option ng-repeat="deg in getDegree "  value="{{deg._id}}">{{deg.name}}</option>
+		  									 		</select>
+		  									 </div>
+		  									 <div class="col-sm-2">Speciality</div>
+		  									 <div class="col-md-4">
+		  									 		<select name="year" id="year" class="form-control" ng-model="doctor.specialityID"  required>
+		  									 			<option value="">Select</option>
+		  									 			<option ng-repeat="spec in displaySpeciality " value="{{spec._id}}">{{spec.name}}</option>
+		  									 		</select>
+		  									 </div>
+		  								</div><br>
+		  								<div class="row">
+		  									<div class="col-sm-2">Year</div>
+		  									 <div class="col-md-4">
+		  									 		<select name="year" id="year" class="form-control" ng-model="doctor.year" required >
+		  									 			<option value="">Select</option>
+		  									 			<option ng-repeat="year in years">{{year}}</option>
+		  									 		</select>
+		  									 </div>
+		  								</div>
+  							</fieldset>
+		          	</div>
+
+		          </div><br>
+
+		      </form>
+
+
+		 </div>
+				 <div class="modal-footer">
+		          <button type="button" class="btn btn-primary" ng-disabled="doctorfrm.$invalid" ng-click="postDoctor(doctor)" data-dismiss="modal" ng-show="btnSave" >Save</button>
+		           <button type="button" class="btn btn-primary" g-disabled="doctorfrm.$invalid" ng-click="updateDoctor(doctor,doctor._id)" data-dismiss="modal" ng-show="btnUpdate" >Update</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		</div>
+ 		</div>
+</div> 
+
+  
+
+ <script type="text/javascript">
+ 	$(function () {
+                $('#dateofbirth').datepicker({
+                    format:'yyyy-mm-dd',
+                    autoclose:true,
+                });
+            });
+ 	
+
+ </script>
+
+

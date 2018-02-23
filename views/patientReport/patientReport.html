@@ -1,0 +1,82 @@
+<h3 class="page-title">
+</h3>
+
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<i class="fa fa-angle-right"></i>
+			<a href="#/ng_patientReport.html">Patient Report</a>
+		</li>
+	</ul>
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>
+
+<div class="row">
+ 	<div class="col-md-12">
+ 		<div class="portlet light bordered">
+ 				<div class="portlet-body">
+
+ 				 <div class="col-md-6">
+ 									<button ng-click="reportNGTable()" class="btn btn-default btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+ 						</div>
+                        <div class="row">
+                                     <table ng-table="tableParams" class="table table-bordered" show-filter="showFilter">
+                                        <tr ng-repeat="rep in patienrReportList">
+                                        	<td data-title="'Appointment ID'" sortable="'_id'">
+                                                <span  e-name="_id" e-form="rowform">
+                                                  {{rep._id}}
+                                            </td>
+                                            <td data-title="'Patient Name'" filter="{ 'name': 'text'}" sortable="'rep.patientId.name'">
+                                                <span  e-name="name" e-form="rowform">
+                                                  {{rep.patientId.name}}
+                                            </td>
+                                            <td data-title="'Hospital Name'" filter="{ 'name': 'name'}" sortable="'description'">
+                                                <span editable-text="rep.hospitalId.name" e-name="name" e-form="rowform">
+                                                  {{rep.hospitalId.name}}
+                                            </td>
+                                             <td data-title="'Date'" filter="{ 'date': 'date'}" sortable="'date'">
+                                                <span editable-text="rep.date" e-name="date" e-form="rowform">
+                                                  {{rep.date}}
+                                            </td>
+                                            <td data-title="'Description'" sortable="'disease_description'">
+                                                <span editable-text="rep.disease_description" e-name="disease_description" e-form="rowform">
+                                                  {{rep.disease_description}}
+                                            </td>
+                                            <td data-title="'Uploaded Files'">
+                                              <center><div class="buttons">
+                                                  <button type="buton" class="btn btn-link" ng-click="viewFile(rep._id)">{{rep.original_Name}}</button>
+                                                </div></center>
+                                            </td>
+                                          <!--   <td style="white-space: nowrap">
+                                                   
+                                                    <form editable-form name="rowform" onbeforesave="editCheckUp($data,check._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                                                      <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary btnradius">
+                                                        <span class="glyphicon glyphicon-ok-circle"></span>
+                                                      </button>
+                                                      <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btnradius">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                      </button>
+                                                    </form>
+                                                    <div class="buttons" ng-show="!rowform.$visible">
+                                                      <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit btnradius"></span></button>
+                                                      <button class="btn btn-danger" ng-click="deleteCheckUp(check._id)">del</button>
+                                                    </div>
+                                            </td> -->
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+
+ 				</div>
+ 		</div>
+	</div>
+</div>

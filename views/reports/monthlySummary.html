@@ -1,0 +1,60 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-green-sharp">
+            <i class=" icon-layers font-green"></i>
+            <span class="caption-subject bold uppercase">Monthly Summary</span>
+            <span class="caption-helper hide"></span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Monthly summary for month</label>
+                    <input type="number" ng-model="monthlySummaryModel.selectedMonth" class="form-control" id="number" aria-describedby="numberHelp" placeholder="Enter month">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" ng-model="monthlySummaryModel.orderBy" ng-value="PF" class="form-check-input"> Order by pf number
+                    </label>
+                </div>
+                <hr>
+                <fieldset class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optionsRadios" ng-model="monthlySummaryModel.options" id="optionsRadios1" value="combilned" checked> Combined
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" ng-model="monthlySummaryModel.options" name="optionsRadios" id="optionsRadios1" value="arresars" checked> Arrears
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" ng-model="monthlySummaryModel.options" name="optionsRadios" id="optionsRadios2" value="monthly"> Monthly
+                        </label>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <select class="form-control" id="exampleSelect1" ng-model="monthlySummaryModel.selectedUnit">
+                        <option>Baner, Pune</option>
+                        <option>Kharghar, Navi Mumbai</option>
+                        <option>Nehru nagar, Solapur</option>
+                        <option>Pandharpur, Solapur</option>
+                        <option>Gangapur, Solapur</option>
+                    </select>
+                </div>
+            </div class="col-sm-12">
+        </div>
+    </div>
+    <div class="container" style="padding-bottom: 10px;">
+        <button name="optionChecked" ng-model="monthlySummaryModel.optionsChecked" ng-value="combined" class="btn btn-secondary">Combined</button>
+        <button name="optionChecked" ng-model="monthlySummaryModel.optionsChecked" ng-value="unitwise" class="btn btn-secondary">Unitwise</button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="close()">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="monthlySummary()">Ok</button>
+    </div>
+</div>
+</div>

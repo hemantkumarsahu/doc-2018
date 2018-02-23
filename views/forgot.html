@@ -1,0 +1,27 @@
+<div class="logo">
+    <h3 style="font-family: Papyrus;
+        color: #4db3a5;
+        font-size: 40px;
+        margin-bottom: -25px;">
+        PDF Zombie
+    </h3>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content" ng-controller="forgotCtrl">
+    <form class="login-form" name="frmforgotPassword" id="frmforgotPassword" novalidate="novalidate" ng-submit="forgot()">
+        <h3 class="font-green">Forget Password ?</h3>
+        <p> Enter your e-mail address below to reset your password. </p>
+        <div class="form-group" >
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" ng-model="forgotModel.email">
+            <div ng-messages="frmforgotPassword.email.$error" ng-if="frmforgotPassword.email.$dirty">
+                <div ng-message="required">Confirm Password is required</div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" id="back-btn" class="btn green btn-outline" ui-sref="login">Back</button>
+            <button type="submit" class="btn btn-success uppercase pull-right" ng-click="sendForgotLink()">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="copyright"> 2014 © Metronic. Admin Dashboard Template. </div>

@@ -1,0 +1,12 @@
+<style>
+    .some-pdf-container {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body>
+    <div class="some-pdf-container">
+        <iframe ng-src="{{filePath | trustUrl}}" width="1240px" height="550px" scrolling="auto"></iframe>
+    </div>
+</body>

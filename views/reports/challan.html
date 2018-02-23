@@ -1,0 +1,38 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-green-sharp">
+            <i class=" icon-layers font-green"></i>
+            <span class="caption-subject bold uppercase">Calculate PF Challan</span>
+            <span class="caption-helper hide"></span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12" align="center">
+                <div class="form-group">
+                    <label class="control-label">PF Challan for month &nbsp;</label>
+                    <input id="month" name="month" ng-model="month" type="number" max="12" min="1" value="month" ng-click="toggleMonth(false)" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Unit</label>
+                    <!-- <select ng-model="selectedUnit">
+                        <option ng-value="Baner">Baner</option>
+                    </select> -->
+                    <select id="unit" ng-model="selectedUnit">
+                                <option ng-repeat="option in data" value="{{option.unit}}">{{option.unit}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Printer &nbsp;</label>
+                    <input id="screen" name="screen" ng-model="challanModel.outputType" type="radio" value="printer">
+                    <label class="control-label">&nbsp;&nbsp;&nbsp;Screen</label>
+                    <input id="screen" name="screen" ng-checked="true" ng-model="challanModel.outputType" type="radio" value="screen">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="challan()">Submit</button>
+                    <button class="btn btn-primary" ng-click="close()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

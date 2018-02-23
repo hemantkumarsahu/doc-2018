@@ -1,0 +1,121 @@
+<h3 class="page-title">
+	
+</h3>
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+            <i class="fa fa-angle-right"></i>
+			<a href="#/ng_checkup.html">CheckUp</a>
+			
+		</li>
+		
+	</ul>
+	
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- BEGIN SPINNER -->
+
+<div ng-spinner-bar class="page-spinner-bar">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+ </div>
+
+ <div class="row" ng-hide="checkUpDetails">
+ 	<div class="col-md-12" >
+ 			<div class="portlet light bordered">
+ 					<div class="portlet-body" ng-hide="checkUpDetails">
+ 					<!-- 	<div class="col-md-6">
+ 									<button ng-click="refreshNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+ 						</div><br> -->
+                        <div class="row ">
+                                     <table ng-table="tableParams" class="table table-bordered tableView" show-filter="showFilter">
+                                        <tr data-ng-repeat="(key,value) in checkupList ">
+                                            <td data-title="'Patient Name'" filter="{ 'name': 'text'}" sortable="'key'">
+                                                <span  e-name="key" e-form="rowform">
+                                                  {{key}}</span>
+                                            </td>                    
+                                          
+                                           
+                                           
+                                            <td  data-title="'History'">
+                                              <center><div class="buttons"  ng-show="!rowform.$visible">
+                                                  <button type="buton" class="btn btn-link" ng-click="viewHistory(value)">View</button>
+                                                </div></center>
+
+                                            </td>
+
+                                           
+                                        </tr>
+                                    </table>
+                                </div>
+                    </div>
+            </div>
+	</div>
+</div>
+
+
+<div class="row" ng-show="showHistory">
+  <div class="col-md-12" >
+      <div class="portlet light bordered">
+          <div class="portlet-body">
+            <div class="col-md-6">
+                  <button type="buton" class="btn btn-primary btnradius" ng-click="getBack()">Back</button>
+            </div>
+            <div class="col-md-6">
+                  <button ng-click="refreshNgTable()" class="btn btnradius">{{(showFilter)?"Remove Filter":"Show Filter"}}</button>
+            </div><br><br><br>
+                        <div class="row">
+                                     <table ng-table="tableParams" class="table table-bordered" show-filter="showFilter">
+                                      
+                                        <tr ng-repeat="his in checkupHistory">
+                                            <td data-title="'Patient Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                                                <span  e-name="name" e-form="rowform">
+                                                  {{his.patientId.name}}
+                                            </td>
+
+
+                                           
+
+                                            <td data-title="'Hospital Name'" filter="{ 'date': 'text'}" sortable="'date'">
+                                                <span  e-name="Date" e-form="rowform">
+                                                  {{his.hospitalId.name}}
+                                            </td>
+
+                                            <td data-title="'Date'" filter="{ 'date': 'text'}" sortable="'date'">
+                                                <span  e-name="Date" e-form="rowform">
+
+                                                  {{his.appointmentId.date}}
+                                            </td>
+
+                                            <td data-title="'CheckUp Description'" filter="{ 'name': 'description'}" sortable="'description'">
+                                                <span editable-text="his.description" e-name="description" e-form="rowform">
+                                                  {{his.description}}
+                                            </td>
+
+                                            
+                                            <td style="white-space: nowrap">
+                                                  
+                                                    <form editable-form name="rowform" onbeforesave="editHis($data,his._id,his.patientId._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                                                      <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary btnradius">
+                                                        <span class="glyphicon glyphicon-ok-circle"></span>
+                                                      </button>
+                                                      <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btnradius">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                      </button>
+                                                    </form>
+                                                    <div class="buttons" ng-show="!rowform.$visible">
+                                                      <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit btnradius"></span></button>
+                                                      <button class="btn btn-danger" ng-click="deleteHis(his._id,his.patientId._id)">del</button>
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                    </div>
+            </div>
+  </div>
+</div>
+

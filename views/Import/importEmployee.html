@@ -1,0 +1,47 @@
+<div ng-app="App" ng-controller="importEmployeeCtrl" class="portlet light bordered">
+    <div class="portlet-title" ng-include="'views/companies/tabsMenu.html'"></div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject bold uppercase">Import</span>
+                        <span class="caption-helper hide"></span>
+                    </div>
+                    <button class="btn btn-primary pull-right" ng-click="refresh()">
+                            Refresh
+                </button>
+                </div>
+                <form ng-submit="Submit()">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="control-label"for="">PF Code</label>
+                              <input type="text" ng-model=eastablishmentCode value={{eastablishmentCode}} readonly>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Year</label>
+                                <input id="companystart"  ng-model="start" value={{start}} readonly>
+                                <input id="companystart"  ng-model="end" value={{end}} readonly>
+                            </div>
+                        </div>
+                        
+                        <div>
+                              <label for="">image</label>
+                              <input type="file" id="file">
+                        </div>
+
+                        <div><button>Import</button></div>                        
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+

@@ -1,0 +1,79 @@
+<style>
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+</style>
+<div class="col-md-12">
+    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+    <div class="portlet light bordered">
+        <div class="portlet-body" style="overflow: auto;">
+            <table ng-table="tableParams" class="table table-bordered" show-filter="true">
+                <tr ng-repeat="user in allEmpolyees">
+                    <td data-title="'PF Code'" filter="{ 'pfNumber': 'text'}" sortable="'pfNumber'">
+                        <span editable-text="user.pfNumber" e-name="pfNumber" e-form="rowform">
+                        {{user.pfNumber}}
+                    </td>
+                    <td data-title="'Name'" filter="{ 'name': 'text'}" sortable="'name'">
+                        <span editable-text="user.name" e-name="name" e-form="rowform">
+                        {{user.name}}
+                    </td>
+                    <td data-title="'Father / Husband Name'"  sortable="'fatherOrHusbandName'">
+                        <span editable-text="user.fatherOrHusbandName" e-name="fatherOrHusbandName" e-form="rowform">
+                        {{user.fatherOrHusbandName}}
+                    </td>
+                    <td data-title="'Relation'"  sortable="'fatherOrHusband'">
+                        <span editable-text="user.fatherOrHusband" e-name="fatherOrHusband" e-form="rowform">
+                        {{(user.fatherOrHusband== 'F')?'Father':(user.fatherOrHusband== 'H')?'Husband':'Not Mentioned'}}
+                    </td>
+                    <td data-title="'Date Of Join'"  sortable="'dateOfJoining'">
+                        <span editable-text="user.dateOfJoining" e-name="dateOfJoining" e-form="rowform">
+                        {{user.dateOfJoining | date}}
+                    </td>
+                    <td data-title="'Date of Birth'"  sortable="'dateOfBirth'">
+                        <span editable-text="user.dateOfBirth" e-name="dateOfBirth" e-form="rowform">
+                        {{user.dateOfBirth|date}}
+                    </td>
+                    <td data-title="'Family PF'"  sortable="'familyPensApplicable'">
+                        <span editable-select="user.familyPensApplicable" e-name="familyPensApplicable" e-form="rowform"  e-ng-options="s for s in ['YES','NO']">
+                        {{user.familyPensApplicable}}
+                    </td>
+                    <td data-title="'Date of Leave'"  sortable="'dateOfLeaving'">
+                        <span editable-uidate="user.dateOfLeaving" e-name="dateOfLeaving" e-form="rowform" e-ui-date="datePickerConfig">
+                        {{(user.dateOfLeaving)?user.dateOfLeaving:"" | date}}
+                    </td>
+                    <td data-title="'Gender'"  sortable="'gender'">
+                        <span editable-select="user.gender" e-name="gender" e-form="rowform" e-ng-options="s for s in ['Male','Female']">
+                        {{user.gender}}
+                    </td>
+                    <!--<td data-title="'Previous Employer'"  sortable="'previousEmployer'">
+                        <span editable-text="user.previousEmployer" e-name="previousEmployer" e-form="rowform">
+                        {{user.previousEmployer}}
+                    </td>-->
+                    <td data-title="'Previous Employer'"  sortable="'previousEmployer'">
+                        <span editable-text="user.previousEmployer" e-name="previousEmployer" e-form="rowform">
+                        {{user.previousEmployer}}
+                    </td>
+                    <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="updateEmployee($data,user._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-ok-circle"></span>
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-primary" ng-click="rowform.$show()"><span class="glyphicon glyphicon-edit"></span></button>
+                            <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->
+</div>
+</div>
